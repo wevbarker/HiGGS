@@ -1,0 +1,56 @@
+\documentclass[crop,12pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{pifont}
+\usepackage{soul}
+\usepackage{ulem} 
+\usepackage{ifthen}
+\usepackage{upgreek}
+\usepackage{enumerate}
+\usepackage{textpos}
+\usepackage{adjustbox}
+\usepackage{etoolbox}
+\usepackage{mathtools}  
+\usepackage{xcolor}  
+\usepackage{textgreek}  
+\usepackage{amssymb}  
+\usepackage{bm}
+\usepackage{xstring}
+\usepackage{stmaryrd}
+\usepackage{environ}
+\usepackage{tensor}
+\usepackage{bbm}
+\usepackage{accents}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage[thinlines,thicklines]{easybmat}
+\usepackage{varwidth}
+\input{macros.tex} %this formats the Class X notation for the various cosmologies
+
+\begin{document}
+
+%\begin{varwidth}{\linewidth}
+\begin{tabular}{c c c c c}
+  \huge{Theory 26: {\color{red}\xmark}} & \huge{Theory 24: {\color{red}\xmark}} & \huge{Theory 28: {\color{red}\xmark}} & \huge{Theory 20: {\color{green}\cmark}} & \huge{Theory 3: {\color{red}\xmark}} \\
+\begin{equation*}\!
+  \input{cases/Case-26}
+\end{equation*} &
+\begin{equation*}\!
+  \input{cases/Case-24}
+  \label{<+label+>}
+\end{equation*} &
+\begin{equation*}\!
+  \input{cases/Case-28}
+  \label{<+label+>}
+\end{equation*} &
+\begin{equation*}\!
+  \input{cases/Case-20}
+  \label{<+label+>}
+\end{equation*} &
+\begin{equation*}\!
+  \input{cases/Case-3}
+  \label{<+label+>}
+\end{equation*}
+\end{tabular}
+%\end{varwidth}
+
+\end{document}
