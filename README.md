@@ -4,11 +4,14 @@
  - In the meantime, feel free to steal code from the ~3000 (nearly uncommented) SLOCs in `main_notebook.nb`
  - Or, get in touch at `wb263@cam.ac.uk`!
 ---
-<img src="sample_output-1.png" width="1000">\
+<img src="sample_output-1.png" width="1000">
 
 ## What is `HiGGS`?
 
-`HiGGS` is a Mathematica package for the xAct tensor algebra suite, which implements the Dirac-Bergmann algorithm across the space of possible gauge gravity theories. Currently `HiGGS` can make strong claims about the particle content and health of Poincaré gauge theories (PGT) of gravity, i.e. theories containing up to quadratic invariants in the Riemann and torsion tensors:
+`HiGGS` is a Mathematica package for the xAct tensor algebra suite, which implements the Dirac-Bergmann algorithm across the space of possible gauge gravity theories. Currently `HiGGS` can make strong claims about the particle content and health of Poincaré gauge theories (PGT) of gravity, i.e. theories containing up to quadratic invariants in the Riemann and torsion tensors, with a 10-parameter Lagrangian:
 
-<img src="lagrangian-1.png" width="300">\
+<img src="lagrangian-1.png" width="500">
+
+Throughout 2021 I aim to extend the code to Weyl and metric-affine gauge theories (WGT/eWGT/MAGT).
+
 
