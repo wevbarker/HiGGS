@@ -34,6 +34,12 @@ for ii in cases do
   converted_theories[ii]:=[simplify(theories[ii][1],eqs),theories[ii][2]]:
 end do:
 
+converted_theories_unitarity:=table([]):
+
+for ii in cases do
+  converted_theories_unitarity[ii]:=[simplify(theories[ii][3],eqs),theories[ii][2]]:
+end do:
+
 no_theory_collisions:=proc(case,conditions):
   ret:=true:
   for jj in cases while jj<>case do
@@ -44,7 +50,6 @@ no_theory_collisions:=proc(case,conditions):
   end do:
   return ret:
 end proc:
-
 
 no_new_primaries:=proc(conditions,primaries):
   untested_sectors:={sectors} minus primaries:
@@ -131,6 +136,7 @@ for ii in simple_cases do
   dit({fred,underline},"--------------------------------------------------------------------------------------------");
   dit({},"case %d",ii):
   conditions:=converted_theories[ii][1]:
+  conditions_unitarity:=converted_theories_unitarity[ii][1]:
   primaries:=find_primaries(conditions):
   simple_primaries:=find_simple_primaries(conditions,primaries):
   massless_primaries:=find_massless_primaries(conditions,primaries):
@@ -139,6 +145,11 @@ for ii in simple_cases do
   massless_frees:=find_massless_frees(conditions,frees):
   dit({},"conditions:"):
   print(op(conditions)):
+  dit({},"better conditions:"):
+  better_condiions:=solve(conditions):
+  print(better_condiions):
+  dit({},"unitarity conditions:"):
+  print(op(map(simplify,conditions_unitarity,better_condiions))):
   dit({},"primaries:"):
   print(op(primaries)):
   dit({},"of which simple:"):
