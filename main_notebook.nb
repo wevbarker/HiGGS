@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1261475,      31966]
-NotebookOptionsPosition[   1261180,      31953]
-NotebookOutlinePosition[   1261514,      31968]
-CellTagsIndexPosition[   1261471,      31965]
+NotebookDataLength[   1326955,      33546]
+NotebookOptionsPosition[   1326660,      33533]
+NotebookOutlinePosition[   1326994,      33548]
+CellTagsIndexPosition[   1326951,      33545]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -8544,10 +8544,17 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
       RowBox[{"-", "c"}], ",", "d"}], "]"}], ",", "M4"}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"DJiDB", "[", 
+     RowBox[{
+      RowBox[{"-", "c"}], ",", "d"}], "]"}], ",", "M4"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"DJiDB", "[", 
+     RowBox[{"DLapseDB", "[", 
       RowBox[{
        RowBox[{"-", "c"}], ",", "d"}], "]"}], ",", "M4"}], "]"}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
@@ -8617,6 +8624,15 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
      RowBox[{
      "ForceMeasureCancellation11", ",", "ForceMeasureCancellation12", ",", 
       "ForceMeasureCancellation21"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DefTensor", "[", 
+    RowBox[{
+     RowBox[{"Lapse", "[", "]"}], ",", "M4", ",", 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<N\>\""}]}], "]"}], ";"}], 
+  RowBox[{"(*", 
+   RowBox[{"clutching", " ", "at", " ", "all", " ", "straws"}], "*)"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DVDBDefinition", "=", 
@@ -8717,17 +8733,44 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
         RowBox[{"-", "e"}], ",", "d"}], "]"}]}], "/.", "PADMActivate"}], "//",
      "ToCanonical"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"AutomaticRules", "[", 
+   RowBox[{"DJiDB", ",", 
+    RowBox[{"MakeRule", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"DJiDB", "[", 
+         RowBox[{
+          RowBox[{"-", "c"}], ",", "d"}], "]"}], ",", 
+        RowBox[{"Evaluate", "[", "DJDBDefinition", "]"}]}], "}"}], ",", 
+      RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+      RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DLapseDBDefinition", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Lapse", "[", "]"}], 
+      RowBox[{"PPerp", "[", 
+       RowBox[{
+        RowBox[{"-", "c"}], ",", "e"}], "]"}], 
+      RowBox[{"H", "[", 
+       RowBox[{
+        RowBox[{"-", "e"}], ",", "d"}], "]"}]}], "/.", "PADMActivate"}], "//",
+     "ToCanonical"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"AutomaticRules", "[", 
-    RowBox[{"DJiDB", ",", 
+    RowBox[{"DLapseDB", ",", 
      RowBox[{"MakeRule", "[", 
       RowBox[{
        RowBox[{"{", 
         RowBox[{
-         RowBox[{"DJiDB", "[", 
+         RowBox[{"DLapseDB", "[", 
           RowBox[{
            RowBox[{"-", "c"}], ",", "d"}], "]"}], ",", 
-         RowBox[{"Evaluate", "[", "DJDBDefinition", "]"}]}], "}"}], ",", 
+         RowBox[{"Evaluate", "[", "DLapseDBDefinition", "]"}]}], "}"}], ",", 
        RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
        RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], "]"}], 
    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -8834,9 +8877,40 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
       RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"AutomaticRules", "[", 
+   RowBox[{"Ji", ",", 
+    RowBox[{"MakeRule", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"CD", "[", 
+          RowBox[{"-", "a"}], "]"}], "[", 
+         RowBox[{"Ji", "[", "]"}], "]"}], ",", 
+        RowBox[{"Evaluate", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Ji", "[", "]"}], 
+           RowBox[{"H", "[", 
+            RowBox[{
+             RowBox[{"-", "k"}], ",", "n"}], "]"}], 
+           RowBox[{"PPara", "[", 
+            RowBox[{"k", ",", 
+             RowBox[{"-", "i"}]}], "]"}], 
+           RowBox[{
+            RowBox[{"CD", "[", 
+             RowBox[{"-", "a"}], "]"}], "[", 
+            RowBox[{"B", "[", 
+             RowBox[{"i", ",", 
+              RowBox[{"-", "n"}]}], "]"}], "]"}]}], "/.", "PADMActivate"}], 
+         "]"}]}], "}"}], ",", 
+      RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+      RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"AutomaticRules", "[", 
-    RowBox[{"Ji", ",", 
+    RowBox[{"Lapse", ",", 
      RowBox[{"MakeRule", "[", 
       RowBox[{
        RowBox[{"{", 
@@ -8844,15 +8918,15 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
          RowBox[{
           RowBox[{"CD", "[", 
            RowBox[{"-", "a"}], "]"}], "[", 
-          RowBox[{"Ji", "[", "]"}], "]"}], ",", 
+          RowBox[{"Lapse", "[", "]"}], "]"}], ",", 
          RowBox[{"Evaluate", "[", 
           RowBox[{
            RowBox[{
-            RowBox[{"Ji", "[", "]"}], 
+            RowBox[{"Lapse", "[", "]"}], 
             RowBox[{"H", "[", 
              RowBox[{
               RowBox[{"-", "k"}], ",", "n"}], "]"}], 
-            RowBox[{"PPara", "[", 
+            RowBox[{"PPerp", "[", 
              RowBox[{"k", ",", 
               RowBox[{"-", "i"}]}], "]"}], 
             RowBox[{
@@ -8864,7 +8938,10 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
           "]"}]}], "}"}], ",", 
        RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
        RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], "]"}], 
-   ";"}], "\[IndentingNewLine]", 
+   ";"}], 
+  RowBox[{"(*", 
+   RowBox[{"Again", ",", " ", 
+    RowBox[{"clutching", "..."}]}], "*)"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefNiceConstantSymbol", "[", 
@@ -11260,16 +11337,37 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
          RowBox[{"-", "e"}]}], "}"}], "]"}]}], "}"}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"RDS2", "[", 
+     RowBox[{"a", ",", "b", ",", 
+      RowBox[{"-", "d"}], ",", 
+      RowBox[{"-", "e"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Antisymmetric", "[", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b"}], "}"}], "]"}], ",", 
+      RowBox[{"Antisymmetric", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "d"}], ",", 
+         RowBox[{"-", "e"}]}], "}"}], "]"}]}], "}"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"RDS2", "[", 
+     RowBox[{"RDS3", "[", 
       RowBox[{"a", ",", "b", ",", 
        RowBox[{"-", "d"}], ",", 
        RowBox[{"-", "e"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
      RowBox[{"{", 
       RowBox[{
        RowBox[{"Antisymmetric", "[", 
@@ -11314,16 +11412,32 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
        RowBox[{"-", "c"}]}], "}"}], "]"}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"TDS2", "[", 
+     RowBox[{"a", ",", 
+      RowBox[{"-", "b"}], ",", 
+      RowBox[{"-", "c"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"Antisymmetric", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "b"}], ",", 
+       RowBox[{"-", "c"}]}], "}"}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"TDS2", "[", 
+     RowBox[{"TDS3", "[", 
       RowBox[{"a", ",", 
        RowBox[{"-", "b"}], ",", 
        RowBox[{"-", "c"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
      RowBox[{"Antisymmetric", "[", 
       RowBox[{"{", 
        RowBox[{
@@ -11355,15 +11469,25 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1b0p\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2B0p", "[", 
+     RowBox[{
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2b0p\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2B0p", "[", 
+     RowBox[{"PhiDS3B0p", "[", 
       RowBox[{
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2b0p\>\""}]}], "]"}], 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3b0p\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11400,22 +11524,39 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1b1p\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2B1p", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "b"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"Antisymmetric", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "a"}], ",", 
+       RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2b1p\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2B1p", "[", 
+     RowBox[{"PhiDS3B1p", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "b"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
      RowBox[{"Antisymmetric", "[", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"-", "a"}], ",", 
         RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2b1p\>\""}]}], "]"}], 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3b1p\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11440,16 +11581,27 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1b1m\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2B1m", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2b1m\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2B1m", "[", 
+     RowBox[{"PhiDS3B1m", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2b1m\>\""}]}], "]"}], 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3b1m\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11486,22 +11638,39 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1b2p\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2B2p", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "b"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"Symmetric", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "a"}], ",", 
+       RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2b2p\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2B2p", "[", 
+     RowBox[{"PhiDS3B2p", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "b"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
      RowBox[{"Symmetric", "[", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"-", "a"}], ",", 
         RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2b2p\>\""}]}], "]"}], 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3b2p\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11524,15 +11693,25 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1A0p\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2A0p", "[", 
+     RowBox[{
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A0p\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2A0p", "[", 
+     RowBox[{"PhiDS3A0p", "[", 
       RowBox[{
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A0p\>\""}]}], "]"}], 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3A0p\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11555,15 +11734,25 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1A0m\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2A0m", "[", 
+     RowBox[{
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A0m\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2A0m", "[", 
+     RowBox[{"PhiDS3A0m", "[", 
       RowBox[{
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A0m\>\""}]}], "]"}], 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3A0m\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11600,22 +11789,39 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1A1p\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2A1p", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "b"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"Antisymmetric", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "a"}], ",", 
+       RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A1p\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2A1p", "[", 
+     RowBox[{"PhiDS3A1p", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "b"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
      RowBox[{"Antisymmetric", "[", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"-", "a"}], ",", 
         RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A1p\>\""}]}], "]"}], 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3A1p\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11640,16 +11846,27 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1A1m\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2A1m", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A1m\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2A1m", "[", 
+     RowBox[{"PhiDS3A1m", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A1m\>\""}]}], "]"}], 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3A1m\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11686,22 +11903,39 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1A2p\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2A2p", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "b"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"Symmetric", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "a"}], ",", 
+       RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A2p\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2A2p", "[", 
+     RowBox[{"PhiDS3A2p", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "b"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
      RowBox[{"Symmetric", "[", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"-", "a"}], ",", 
         RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A2p\>\""}]}], "]"}], 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3A2p\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"DefTensor", "[", 
@@ -11740,23 +11974,41 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S1A2m\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"PhiDS2A2m", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "b"}], ",", 
+      RowBox[{"-", "c"}], ",", 
+      RowBox[{"-", "x"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+    RowBox[{"Antisymmetric", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "a"}], ",", 
+       RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
+    RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A2m\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"PhiDS2A2m", "[", 
+     RowBox[{"PhiDS3A2m", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "b"}], ",", 
        RowBox[{"-", "c"}], ",", 
        RowBox[{"-", "x"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4", ",", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4", ",", 
      RowBox[{"Antisymmetric", "[", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"-", "a"}], ",", 
         RowBox[{"-", "b"}]}], "}"}], "]"}], ",", 
-     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S2A2m\>\""}]}], "]"}], 
+     RowBox[{"PrintAs", "\[Rule]", "\"\<\[CapitalPhi]S3A2m\>\""}]}], "]"}], 
    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
@@ -11794,7 +12046,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
           RowBox[{"-", "a"}], ",", 
           RowBox[{"-", "x"}], ",", 
           RowBox[{"-", "y"}], ",", 
-          RowBox[{"-", "z"}]}], "]"}], ",", "0"}], "}"}], ",", 
+          RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "0"}], "}"}], ",", 
       RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
       RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
@@ -11812,7 +12064,26 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
            RowBox[{"-", "a"}], ",", 
            RowBox[{"-", "x"}], ",", 
            RowBox[{"-", "y"}], ",", 
-           RowBox[{"-", "z"}]}], "]"}], ",", "0"}], "}"}], ",", 
+           RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "0"}], "}"}], ",", 
+       RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+       RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], "]"}], 
+   ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AutomaticRules", "[", 
+    RowBox[{"PhiDS3A2m", ",", 
+     RowBox[{"MakeRule", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PhiDS3A2m", "[", 
+          RowBox[{"a", ",", 
+           RowBox[{"-", "b"}], ",", 
+           RowBox[{"-", "a"}], ",", 
+           RowBox[{"-", "x"}], ",", 
+           RowBox[{"-", "y"}], ",", 
+           RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "0"}], "}"}],
+        ",", 
        RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
        RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], "]"}], 
    ";"}], " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -11840,15 +12111,24 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4"}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"QDS2", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"QDS2", "[", 
+     RowBox[{"QDS3", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4"}], "]"}], ";"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4"}], "]"}], 
+   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
    "This", " ", "part", " ", "to", " ", "deal", " ", "with", " ", "the", " ", 
@@ -11877,15 +12157,65 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4"}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"JDS2", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"DefTensor", "[", 
     RowBox[{
-     RowBox[{"JDS2", "[", 
+     RowBox[{"JDS3", "[", 
       RowBox[{
        RowBox[{"-", "a"}], ",", 
        RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4"}], "]"}], ";"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4"}], "]"}], 
+   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "This", " ", "part", " ", "to", " ", "deal", " ", "with", " ", "the", " ", 
+    "lapse"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"LapseD", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}]}], "]"}], ",", "M4"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"LapseDS1", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DefTensor", "[", 
+   RowBox[{
+    RowBox[{"LapseDS2", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "y"}], ",", 
+      RowBox[{"-", "z"}], ",", "v"}], "]"}], ",", "M4"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DefTensor", "[", 
+    RowBox[{
+     RowBox[{"LapseDS3", "[", 
+      RowBox[{
+       RowBox[{"-", "a"}], ",", 
+       RowBox[{"-", "y"}], ",", 
+       RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}], ",", "M4"}], "]"}], 
+   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
     RowBox[{
@@ -11903,8 +12233,11 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
       "such", " ", "changes", " ", "were", " ", "also", " ", "made", " ", 
        "for", " ", "extra", " ", "factor", " ", "of", " ", 
        RowBox[{"1", "/", "4"}], " ", "in", " ", "Riemann", " ", "sector"}], 
-      "..."}], ")"}]}], "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  
+      "..."}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "also", " ", "moved", " ", "measure", " ", "inside", " ", "the", " ", 
+    "derivatives"}], "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{"PBs", " ", "on", " ", "constraint", " ", "functions"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -11917,44 +12250,70 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
        RowBox[{"2", 
         RowBox[{"(", 
          RowBox[{"1", "/", "16"}], ")"}], 
-        RowBox[{"J", "[", "]"}], 
         RowBox[{"(", 
          RowBox[{
           RowBox[{"\[Omega]B0p", " ", 
            RowBox[{"(", 
             RowBox[{
              RowBox[{
+              RowBox[{"Lapse", "[", "]"}], 
+              RowBox[{"J", "[", "]"}], 
               RowBox[{"PhiB0p", "[", "]"}], 
               RowBox[{"PhiDB0p", "[", 
                RowBox[{
                 RowBox[{"-", "x"}], ",", 
                 RowBox[{"-", "y"}], ",", 
-                RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{"CD", "[", 
                RowBox[{"-", "v"}], "]"}], "[", 
               RowBox[{
+               RowBox[{"Lapse", "[", "]"}], 
+               RowBox[{"J", "[", "]"}], 
                RowBox[{"PhiB0p", "[", "]"}], 
                RowBox[{"PhiDS1B0p", "[", 
                 RowBox[{
                  RowBox[{"-", "x"}], ",", 
                  RowBox[{"-", "y"}], ",", 
                  RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+             "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{
                RowBox[{"CD", "[", 
                 RowBox[{"-", "v"}], "]"}], "[", 
-               RowBox[{"PhiB0p", "[", "]"}], "]"}], 
+               RowBox[{
+                RowBox[{"Lapse", "[", "]"}], 
+                RowBox[{"J", "[", "]"}], 
+                RowBox[{"PhiB0p", "[", "]"}]}], "]"}], 
               RowBox[{"PhiDS2B0p", "[", 
                RowBox[{
                 RowBox[{"-", "x"}], ",", 
                 RowBox[{"-", "y"}], ",", 
-                RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-          "\[IndentingNewLine]", 
+                RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"CD", "[", 
+               RowBox[{"-", "w"}], "]"}], "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"CD", "[", 
+                 RowBox[{"-", "v"}], "]"}], "[", 
+                RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
+                 RowBox[{"PhiB0p", "[", "]"}]}], "]"}], 
+               RowBox[{"PhiDS3B0p", "[", 
+                RowBox[{
+                 RowBox[{"-", "x"}], ",", 
+                 RowBox[{"-", "y"}], ",", 
+                 RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], "]"}]}], 
+            ")"}]}], "+", "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B1p", " ", 
            RowBox[{"(", 
             RowBox[{
              RowBox[{
+              RowBox[{"Lapse", "[", "]"}], 
+              RowBox[{"J", "[", "]"}], 
               RowBox[{"PhiB1p", "[", 
                RowBox[{
                 RowBox[{"-", "a"}], ",", 
@@ -11963,11 +12322,13 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"a", ",", "b", ",", 
                 RowBox[{"-", "x"}], ",", 
                 RowBox[{"-", "y"}], ",", 
-                RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{"CD", "[", 
                RowBox[{"-", "v"}], "]"}], "[", 
               RowBox[{
+               RowBox[{"Lapse", "[", "]"}], 
+               RowBox[{"J", "[", "]"}], 
                RowBox[{"PhiB1p", "[", 
                 RowBox[{
                  RowBox[{"-", "a"}], ",", 
@@ -11977,35 +12338,63 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "x"}], ",", 
                  RowBox[{"-", "y"}], ",", 
                  RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+             "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{
                RowBox[{"CD", "[", 
                 RowBox[{"-", "v"}], "]"}], "[", 
-               RowBox[{"PhiB1p", "[", 
-                RowBox[{
-                 RowBox[{"-", "a"}], ",", 
-                 RowBox[{"-", "b"}]}], "]"}], "]"}], 
+               RowBox[{
+                RowBox[{"Lapse", "[", "]"}], 
+                RowBox[{"J", "[", "]"}], 
+                RowBox[{"PhiB1p", "[", 
+                 RowBox[{
+                  RowBox[{"-", "a"}], ",", 
+                  RowBox[{"-", "b"}]}], "]"}]}], "]"}], 
               RowBox[{"PhiDS2B1p", "[", 
                RowBox[{"a", ",", "b", ",", 
                 RowBox[{"-", "x"}], ",", 
                 RowBox[{"-", "y"}], ",", 
-                RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-          "\[IndentingNewLine]", 
+                RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"CD", "[", 
+               RowBox[{"-", "w"}], "]"}], "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"CD", "[", 
+                 RowBox[{"-", "v"}], "]"}], "[", 
+                RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
+                 RowBox[{"PhiB1p", "[", 
+                  RowBox[{
+                   RowBox[{"-", "a"}], ",", 
+                   RowBox[{"-", "b"}]}], "]"}]}], "]"}], 
+               RowBox[{"PhiDS3B1p", "[", 
+                RowBox[{"a", ",", "b", ",", 
+                 RowBox[{"-", "x"}], ",", 
+                 RowBox[{"-", "y"}], ",", 
+                 RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], "]"}]}], 
+            ")"}]}], "+", "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B1m", " ", 
            RowBox[{"(", 
             RowBox[{
              RowBox[{
+              RowBox[{"Lapse", "[", "]"}], 
+              RowBox[{"J", "[", "]"}], 
               RowBox[{"PhiB1m", "[", 
                RowBox[{"-", "a"}], "]"}], 
               RowBox[{"PhiDB1m", "[", 
                RowBox[{"a", ",", 
                 RowBox[{"-", "x"}], ",", 
                 RowBox[{"-", "y"}], ",", 
-                RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{"CD", "[", 
                RowBox[{"-", "v"}], "]"}], "[", 
               RowBox[{
+               RowBox[{"Lapse", "[", "]"}], 
+               RowBox[{"J", "[", "]"}], 
                RowBox[{"PhiB1m", "[", 
                 RowBox[{"-", "a"}], "]"}], 
                RowBox[{"PhiDS1B1m", "[", 
@@ -12013,22 +12402,46 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "x"}], ",", 
                  RowBox[{"-", "y"}], ",", 
                  RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+             "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{
                RowBox[{"CD", "[", 
                 RowBox[{"-", "v"}], "]"}], "[", 
-               RowBox[{"PhiB1m", "[", 
-                RowBox[{"-", "a"}], "]"}], "]"}], 
+               RowBox[{
+                RowBox[{"Lapse", "[", "]"}], 
+                RowBox[{"J", "[", "]"}], 
+                RowBox[{"PhiB1m", "[", 
+                 RowBox[{"-", "a"}], "]"}]}], "]"}], 
               RowBox[{"PhiDS2B1m", "[", 
                RowBox[{"a", ",", 
                 RowBox[{"-", "x"}], ",", 
                 RowBox[{"-", "y"}], ",", 
-                RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-          "\[IndentingNewLine]", 
+                RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"CD", "[", 
+               RowBox[{"-", "w"}], "]"}], "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"CD", "[", 
+                 RowBox[{"-", "v"}], "]"}], "[", 
+                RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
+                 RowBox[{"PhiB1m", "[", 
+                  RowBox[{"-", "a"}], "]"}]}], "]"}], 
+               RowBox[{"PhiDS3B1m", "[", 
+                RowBox[{"a", ",", 
+                 RowBox[{"-", "x"}], ",", 
+                 RowBox[{"-", "y"}], ",", 
+                 RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], "]"}]}], 
+            ")"}]}], "+", "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B2p", 
            RowBox[{"(", 
             RowBox[{
              RowBox[{
+              RowBox[{"Lapse", "[", "]"}], 
+              RowBox[{"J", "[", "]"}], 
               RowBox[{"PhiB2p", "[", 
                RowBox[{
                 RowBox[{"-", "a"}], ",", 
@@ -12037,11 +12450,13 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"a", ",", "b", ",", 
                 RowBox[{"-", "x"}], ",", 
                 RowBox[{"-", "y"}], ",", 
-                RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{"CD", "[", 
                RowBox[{"-", "v"}], "]"}], "[", 
               RowBox[{
+               RowBox[{"Lapse", "[", "]"}], 
+               RowBox[{"J", "[", "]"}], 
                RowBox[{"PhiB2p", "[", 
                 RowBox[{
                  RowBox[{"-", "a"}], ",", 
@@ -12051,20 +12466,44 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "x"}], ",", 
                  RowBox[{"-", "y"}], ",", 
                  RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+             "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{
                RowBox[{"CD", "[", 
                 RowBox[{"-", "v"}], "]"}], "[", 
-               RowBox[{"PhiB2p", "[", 
-                RowBox[{
-                 RowBox[{"-", "a"}], ",", 
-                 RowBox[{"-", "b"}]}], "]"}], "]"}], 
+               RowBox[{
+                RowBox[{"Lapse", "[", "]"}], 
+                RowBox[{"J", "[", "]"}], 
+                RowBox[{"PhiB2p", "[", 
+                 RowBox[{
+                  RowBox[{"-", "a"}], ",", 
+                  RowBox[{"-", "b"}]}], "]"}]}], "]"}], 
               RowBox[{"PhiDS2B2p", "[", 
                RowBox[{"a", ",", "b", ",", 
                 RowBox[{"-", "x"}], ",", 
                 RowBox[{"-", "y"}], ",", 
-                RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-          "\[IndentingNewLine]", 
+                RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"CD", "[", 
+               RowBox[{"-", "w"}], "]"}], "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"CD", "[", 
+                 RowBox[{"-", "v"}], "]"}], "[", 
+                RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
+                 RowBox[{"PhiB2p", "[", 
+                  RowBox[{
+                   RowBox[{"-", "a"}], ",", 
+                   RowBox[{"-", "b"}]}], "]"}]}], "]"}], 
+               RowBox[{"PhiDS3B2p", "[", 
+                RowBox[{"a", ",", "b", ",", 
+                 RowBox[{"-", "x"}], ",", 
+                 RowBox[{"-", "y"}], ",", 
+                 RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], "]"}]}], 
+            ")"}]}], "+", "\[IndentingNewLine]", 
           RowBox[{
            RowBox[{"(", 
             RowBox[{"1", "/", "4"}], ")"}], 
@@ -12074,68 +12513,108 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
               RowBox[{"(", 
                RowBox[{
                 RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
                  RowBox[{"PhiA0p", "[", "]"}], 
                  RowBox[{"PhiDA0p", "[", 
                   RowBox[{
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                   RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
+                
                 RowBox[{
                  RowBox[{"CD", "[", 
                   RowBox[{"-", "v"}], "]"}], "[", 
                  RowBox[{
+                  RowBox[{"Lapse", "[", "]"}], 
+                  RowBox[{"J", "[", "]"}], 
                   RowBox[{"PhiA0p", "[", "]"}], 
                   RowBox[{"PhiDS1A0p", "[", 
                    RowBox[{
                     RowBox[{"-", "x"}], ",", 
                     RowBox[{"-", "y"}], ",", 
                     RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
                 RowBox[{
+                 RowBox[{"CD", "[", 
+                  RowBox[{"-", "w"}], "]"}], "[", 
                  RowBox[{
-                  RowBox[{"CD", "[", 
-                   RowBox[{"-", "v"}], "]"}], "[", 
-                  RowBox[{"PhiA0p", "[", "]"}], "]"}], 
-                 RowBox[{"PhiDS2A0p", "[", 
                   RowBox[{
-                   RowBox[{"-", "x"}], ",", 
-                   RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-             "\[IndentingNewLine]", 
+                   RowBox[{"CD", "[", 
+                    RowBox[{"-", "v"}], "]"}], "[", 
+                   RowBox[{
+                    RowBox[{"Lapse", "[", "]"}], 
+                    RowBox[{"J", "[", "]"}], 
+                    RowBox[{"PhiA0p", "[", "]"}]}], "]"}], 
+                  RowBox[{"PhiDS3A0p", "[", 
+                   RowBox[{
+                    RowBox[{"-", "x"}], ",", 
+                    RowBox[{"-", "y"}], ",", 
+                    RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], 
+                 "]"}]}], ")"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A0m", " ", 
               RowBox[{"(", 
                RowBox[{
                 RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
                  RowBox[{"PhiA0m", "[", "]"}], 
                  RowBox[{"PhiDA0m", "[", 
                   RowBox[{
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                   RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
+                
                 RowBox[{
                  RowBox[{"CD", "[", 
                   RowBox[{"-", "v"}], "]"}], "[", 
                  RowBox[{
+                  RowBox[{"Lapse", "[", "]"}], 
+                  RowBox[{"J", "[", "]"}], 
                   RowBox[{"PhiA0m", "[", "]"}], 
                   RowBox[{"PhiDS1A0m", "[", 
                    RowBox[{
                     RowBox[{"-", "x"}], ",", 
                     RowBox[{"-", "y"}], ",", 
                     RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
                 RowBox[{
                  RowBox[{
                   RowBox[{"CD", "[", 
                    RowBox[{"-", "v"}], "]"}], "[", 
-                  RowBox[{"PhiA0m", "[", "]"}], "]"}], 
+                  RowBox[{
+                   RowBox[{"Lapse", "[", "]"}], 
+                   RowBox[{"J", "[", "]"}], 
+                   RowBox[{"PhiA0m", "[", "]"}]}], "]"}], 
                  RowBox[{"PhiDS2A0m", "[", 
                   RowBox[{
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-             "\[IndentingNewLine]", 
+                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"CD", "[", 
+                  RowBox[{"-", "w"}], "]"}], "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"CD", "[", 
+                    RowBox[{"-", "v"}], "]"}], "[", 
+                   RowBox[{
+                    RowBox[{"Lapse", "[", "]"}], 
+                    RowBox[{"J", "[", "]"}], 
+                    RowBox[{"PhiA0m", "[", "]"}]}], "]"}], 
+                  RowBox[{"PhiDS3A0m", "[", 
+                   RowBox[{
+                    RowBox[{"-", "x"}], ",", 
+                    RowBox[{"-", "y"}], ",", 
+                    RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], 
+                 "]"}]}], ")"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A1p", " ", 
               RowBox[{"(", 
                RowBox[{
                 RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
                  RowBox[{"PhiA1p", "[", 
                   RowBox[{
                    RowBox[{"-", "a"}], ",", 
@@ -12144,11 +12623,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"a", ",", "b", ",", 
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                   RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
+                
                 RowBox[{
                  RowBox[{"CD", "[", 
                   RowBox[{"-", "v"}], "]"}], "[", 
                  RowBox[{
+                  RowBox[{"Lapse", "[", "]"}], 
+                  RowBox[{"J", "[", "]"}], 
                   RowBox[{"PhiA1p", "[", 
                    RowBox[{
                     RowBox[{"-", "a"}], ",", 
@@ -12158,35 +12640,64 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "x"}], ",", 
                     RowBox[{"-", "y"}], ",", 
                     RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
                 RowBox[{
                  RowBox[{
                   RowBox[{"CD", "[", 
                    RowBox[{"-", "v"}], "]"}], "[", 
-                  RowBox[{"PhiA1p", "[", 
-                   RowBox[{
+                  RowBox[{
+                   RowBox[{"Lapse", "[", "]"}], 
+                   RowBox[{"J", "[", "]"}], 
+                   RowBox[{"PhiA1p", "[", 
+                    RowBox[{
                     RowBox[{"-", "a"}], ",", 
-                    RowBox[{"-", "b"}]}], "]"}], "]"}], 
+                    RowBox[{"-", "b"}]}], "]"}]}], "]"}], 
                  RowBox[{"PhiDS2A1p", "[", 
                   RowBox[{"a", ",", "b", ",", 
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-             "\[IndentingNewLine]", 
+                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"CD", "[", 
+                  RowBox[{"-", "w"}], "]"}], "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"CD", "[", 
+                    RowBox[{"-", "v"}], "]"}], "[", 
+                   RowBox[{
+                    RowBox[{"Lapse", "[", "]"}], 
+                    RowBox[{"J", "[", "]"}], 
+                    RowBox[{"PhiA1p", "[", 
+                    RowBox[{
+                    RowBox[{"-", "a"}], ",", 
+                    RowBox[{"-", "b"}]}], "]"}]}], "]"}], 
+                  RowBox[{"PhiDS3A1p", "[", 
+                   RowBox[{"a", ",", "b", ",", 
+                    RowBox[{"-", "x"}], ",", 
+                    RowBox[{"-", "y"}], ",", 
+                    RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], 
+                 "]"}]}], ")"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A1m", " ", 
               RowBox[{"(", 
                RowBox[{
                 RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
                  RowBox[{"PhiA1m", "[", 
                   RowBox[{"-", "a"}], "]"}], 
                  RowBox[{"PhiDA1m", "[", 
                   RowBox[{"a", ",", 
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                   RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
+                
                 RowBox[{
                  RowBox[{"CD", "[", 
                   RowBox[{"-", "v"}], "]"}], "[", 
                  RowBox[{
+                  RowBox[{"Lapse", "[", "]"}], 
+                  RowBox[{"J", "[", "]"}], 
                   RowBox[{"PhiA1m", "[", 
                    RowBox[{"-", "a"}], "]"}], 
                   RowBox[{"PhiDS1A1m", "[", 
@@ -12194,22 +12705,46 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "x"}], ",", 
                     RowBox[{"-", "y"}], ",", 
                     RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
                 RowBox[{
                  RowBox[{
                   RowBox[{"CD", "[", 
                    RowBox[{"-", "v"}], "]"}], "[", 
-                  RowBox[{"PhiA1m", "[", 
-                   RowBox[{"-", "a"}], "]"}], "]"}], 
+                  RowBox[{
+                   RowBox[{"Lapse", "[", "]"}], 
+                   RowBox[{"J", "[", "]"}], 
+                   RowBox[{"PhiA1m", "[", 
+                    RowBox[{"-", "a"}], "]"}]}], "]"}], 
                  RowBox[{"PhiDS2A1m", "[", 
                   RowBox[{"a", ",", 
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-             "\[IndentingNewLine]", 
+                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"CD", "[", 
+                  RowBox[{"-", "w"}], "]"}], "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"CD", "[", 
+                    RowBox[{"-", "v"}], "]"}], "[", 
+                   RowBox[{
+                    RowBox[{"Lapse", "[", "]"}], 
+                    RowBox[{"J", "[", "]"}], 
+                    RowBox[{"PhiA1m", "[", 
+                    RowBox[{"-", "a"}], "]"}]}], "]"}], 
+                  RowBox[{"PhiDS3A1m", "[", 
+                   RowBox[{"a", ",", 
+                    RowBox[{"-", "x"}], ",", 
+                    RowBox[{"-", "y"}], ",", 
+                    RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], 
+                 "]"}]}], ")"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A2p", " ", 
               RowBox[{"(", 
                RowBox[{
                 RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
                  RowBox[{"PhiA2p", "[", 
                   RowBox[{
                    RowBox[{"-", "a"}], ",", 
@@ -12218,11 +12753,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"a", ",", "b", ",", 
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                   RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
+                
                 RowBox[{
                  RowBox[{"CD", "[", 
                   RowBox[{"-", "v"}], "]"}], "[", 
                  RowBox[{
+                  RowBox[{"Lapse", "[", "]"}], 
+                  RowBox[{"J", "[", "]"}], 
                   RowBox[{"PhiA2p", "[", 
                    RowBox[{
                     RowBox[{"-", "a"}], ",", 
@@ -12232,24 +12770,50 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "x"}], ",", 
                     RowBox[{"-", "y"}], ",", 
                     RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
                 RowBox[{
                  RowBox[{
                   RowBox[{"CD", "[", 
                    RowBox[{"-", "v"}], "]"}], "[", 
-                  RowBox[{"PhiA2p", "[", 
-                   RowBox[{
+                  RowBox[{
+                   RowBox[{"Lapse", "[", "]"}], 
+                   RowBox[{"J", "[", "]"}], 
+                   RowBox[{"PhiA2p", "[", 
+                    RowBox[{
                     RowBox[{"-", "a"}], ",", 
-                    RowBox[{"-", "b"}]}], "]"}], "]"}], 
+                    RowBox[{"-", "b"}]}], "]"}]}], "]"}], 
                  RowBox[{"PhiDS2A2p", "[", 
                   RowBox[{"a", ",", "b", ",", 
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "+", 
-             "\[IndentingNewLine]", 
+                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"CD", "[", 
+                  RowBox[{"-", "w"}], "]"}], "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"CD", "[", 
+                    RowBox[{"-", "v"}], "]"}], "[", 
+                   RowBox[{
+                    RowBox[{"Lapse", "[", "]"}], 
+                    RowBox[{"J", "[", "]"}], 
+                    RowBox[{"PhiA2p", "[", 
+                    RowBox[{
+                    RowBox[{"-", "a"}], ",", 
+                    RowBox[{"-", "b"}]}], "]"}]}], "]"}], 
+                  RowBox[{"PhiDS3A2p", "[", 
+                   RowBox[{"a", ",", "b", ",", 
+                    RowBox[{"-", "x"}], ",", 
+                    RowBox[{"-", "y"}], ",", 
+                    RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], 
+                 "]"}]}], ")"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A2m", " ", 
               RowBox[{"(", 
                RowBox[{
                 RowBox[{
+                 RowBox[{"Lapse", "[", "]"}], 
+                 RowBox[{"J", "[", "]"}], 
                  RowBox[{"PhiA2m", "[", 
                   RowBox[{
                    RowBox[{"-", "a"}], ",", 
@@ -12259,11 +12823,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"a", ",", "b", ",", "c", ",", 
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}]}], "]"}]}], "-", 
+                   RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
+                
                 RowBox[{
                  RowBox[{"CD", "[", 
                   RowBox[{"-", "v"}], "]"}], "[", 
                  RowBox[{
+                  RowBox[{"Lapse", "[", "]"}], 
+                  RowBox[{"J", "[", "]"}], 
                   RowBox[{"PhiA2m", "[", 
                    RowBox[{
                     RowBox[{"-", "a"}], ",", 
@@ -12274,23 +12841,48 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "x"}], ",", 
                     RowBox[{"-", "y"}], ",", 
                     RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
                 RowBox[{
                  RowBox[{
                   RowBox[{"CD", "[", 
                    RowBox[{"-", "v"}], "]"}], "[", 
-                  RowBox[{"PhiA2m", "[", 
-                   RowBox[{
+                  RowBox[{
+                   RowBox[{"Lapse", "[", "]"}], 
+                   RowBox[{"J", "[", "]"}], 
+                   RowBox[{"PhiA2m", "[", 
+                    RowBox[{
                     RowBox[{"-", "a"}], ",", 
                     RowBox[{"-", "b"}], ",", 
-                    RowBox[{"-", "c"}]}], "]"}], "]"}], 
+                    RowBox[{"-", "c"}]}], "]"}]}], "]"}], 
                  RowBox[{"PhiDS2A2m", "[", 
                   RowBox[{"a", ",", "b", ",", "c", ",", 
                    RowBox[{"-", "x"}], ",", 
                    RowBox[{"-", "y"}], ",", 
-                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}]}], 
-            ")"}]}]}], ")"}]}], "/.", "TotalSolutions"}], "//", 
-      "ToCanonical"}], "//", "CollectTensors"}]}], ";"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                   RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"CD", "[", 
+                  RowBox[{"-", "w"}], "]"}], "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"CD", "[", 
+                    RowBox[{"-", "v"}], "]"}], "[", 
+                   RowBox[{
+                    RowBox[{"Lapse", "[", "]"}], 
+                    RowBox[{"J", "[", "]"}], 
+                    RowBox[{"PhiA2m", "[", 
+                    RowBox[{
+                    RowBox[{"-", "a"}], ",", 
+                    RowBox[{"-", "b"}], ",", 
+                    RowBox[{"-", "c"}]}], "]"}]}], "]"}], 
+                  RowBox[{"PhiDS3A2m", "[", 
+                   RowBox[{"a", ",", "b", ",", "c", ",", 
+                    RowBox[{"-", "x"}], ",", 
+                    RowBox[{"-", "y"}], ",", 
+                    RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], 
+                 "]"}]}], ")"}]}]}], ")"}]}]}], ")"}]}], "/.", 
+       "TotalSolutions"}], "//", "ToCanonical"}], "//", "CollectTensors"}]}], 
+   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
     RowBox[{
@@ -12308,10 +12900,11 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
       RowBox[{
        RowBox[{
         RowBox[{"-", "2"}], 
-        RowBox[{"J", "[", "]"}], 
         RowBox[{"(", 
          RowBox[{
           RowBox[{
+           RowBox[{"Lapse", "[", "]"}], 
+           RowBox[{"J", "[", "]"}], 
            RowBox[{"T", "[", 
             RowBox[{"i", ",", 
              RowBox[{"-", "m"}], ",", 
@@ -12328,14 +12921,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{"-", "i"}], ",", 
                 RowBox[{"-", "g"}], ",", 
                 RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}], 
-             "+", 
+             "+", "\[IndentingNewLine]", 
              RowBox[{"\[Beta]2W", " ", 
               RowBox[{"PT2", "[", 
                RowBox[{
                 RowBox[{"-", "i"}], ",", 
                 RowBox[{"-", "g"}], ",", 
                 RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}], 
-             "+", 
+             "+", "\[IndentingNewLine]", 
              RowBox[{"\[Beta]3W", " ", 
               RowBox[{"PT3", "[", 
                RowBox[{
@@ -12355,6 +12948,8 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
            RowBox[{"CD", "[", 
             RowBox[{"-", "v"}], "]"}], "[", 
            RowBox[{
+            RowBox[{"Lapse", "[", "]"}], 
+            RowBox[{"J", "[", "]"}], 
             RowBox[{"T", "[", 
              RowBox[{"i", ",", 
               RowBox[{"-", "m"}], ",", 
@@ -12371,14 +12966,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "i"}], ",", 
                  RowBox[{"-", "g"}], ",", 
                  RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}], 
-              "+", 
+              "+", "\[IndentingNewLine]", 
               RowBox[{"\[Beta]2W", " ", 
                RowBox[{"PT2", "[", 
                 RowBox[{
                  RowBox[{"-", "i"}], ",", 
                  RowBox[{"-", "g"}], ",", 
                  RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}], 
-              "+", 
+              "+", "\[IndentingNewLine]", 
               RowBox[{"\[Beta]3W", " ", 
                RowBox[{"PT3", "[", 
                 RowBox[{
@@ -12394,11 +12989,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
               RowBox[{"-", "x"}], ",", 
               RowBox[{"-", "y"}], ",", 
               RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+          "\[IndentingNewLine]", 
           RowBox[{
            RowBox[{
             RowBox[{"CD", "[", 
              RowBox[{"-", "v"}], "]"}], "[", 
             RowBox[{
+             RowBox[{"Lapse", "[", "]"}], 
+             RowBox[{"J", "[", "]"}], 
              RowBox[{"T", "[", 
               RowBox[{"i", ",", 
                RowBox[{"-", "m"}], ",", 
@@ -12415,14 +13013,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"-", "i"}], ",", 
                   RowBox[{"-", "g"}], ",", 
                   RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}],
-                "+", 
+                "+", "\[IndentingNewLine]", 
                RowBox[{"\[Beta]2W", " ", 
                 RowBox[{"PT2", "[", 
                  RowBox[{
                   RowBox[{"-", "i"}], ",", 
                   RowBox[{"-", "g"}], ",", 
                   RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}],
-                "+", 
+                "+", "\[IndentingNewLine]", 
                RowBox[{"\[Beta]3W", " ", 
                 RowBox[{"PT3", "[", 
                  RowBox[{
@@ -12437,9 +13035,61 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
              RowBox[{"-", "d"}], ",", 
              RowBox[{"-", "x"}], ",", 
              RowBox[{"-", "y"}], ",", 
-             RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "+", 
+             RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
           "\[IndentingNewLine]", 
           RowBox[{
+           RowBox[{"CD", "[", 
+            RowBox[{"-", "w"}], "]"}], "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"CD", "[", 
+              RowBox[{"-", "v"}], "]"}], "[", 
+             RowBox[{
+              RowBox[{"Lapse", "[", "]"}], 
+              RowBox[{"J", "[", "]"}], 
+              RowBox[{"T", "[", 
+               RowBox[{"i", ",", 
+                RowBox[{"-", "m"}], ",", 
+                RowBox[{"-", "n"}]}], "]"}], 
+              RowBox[{"PPara", "[", 
+               RowBox[{"m", ",", "g"}], "]"}], 
+              RowBox[{"PPara", "[", 
+               RowBox[{"n", ",", "h"}], "]"}], 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"\[Beta]1W", " ", 
+                 RowBox[{"PT1", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
+                  "]"}]}], "+", "\[IndentingNewLine]", 
+                RowBox[{"\[Beta]2W", " ", 
+                 RowBox[{"PT2", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
+                  "]"}]}], "+", "\[IndentingNewLine]", 
+                RowBox[{"\[Beta]3W", " ", 
+                 RowBox[{"PT3", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
+                  "]"}]}]}], ")"}]}], "]"}], 
+            RowBox[{"TDS3", "[", 
+             RowBox[{
+              RowBox[{"-", "a"}], ",", 
+              RowBox[{"-", "c"}], ",", 
+              RowBox[{"-", "d"}], ",", 
+              RowBox[{"-", "x"}], ",", 
+              RowBox[{"-", "y"}], ",", 
+              RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], "]"}], "+", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Lapse", "[", "]"}], 
+           RowBox[{"J", "[", "]"}], 
            RowBox[{"R", "[", 
             RowBox[{"i", ",", "j", ",", 
              RowBox[{"-", "m"}], ",", 
@@ -12457,7 +13107,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{"-", "j"}], ",", 
                 RowBox[{"-", "g"}], ",", 
                 RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-               "]"}]}], "+", 
+               "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Alpha]2W", " ", 
               RowBox[{"PR2", "[", 
                RowBox[{
@@ -12465,7 +13115,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{"-", "j"}], ",", 
                 RowBox[{"-", "g"}], ",", 
                 RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-               "]"}]}], "+", 
+               "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Alpha]3W", " ", 
               RowBox[{"PR3", "[", 
                RowBox[{
@@ -12473,7 +13123,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{"-", "j"}], ",", 
                 RowBox[{"-", "g"}], ",", 
                 RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-               "]"}]}], "+", 
+               "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Alpha]4W", " ", 
               RowBox[{"PR4", "[", 
                RowBox[{
@@ -12481,7 +13131,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{"-", "j"}], ",", 
                 RowBox[{"-", "g"}], ",", 
                 RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-               "]"}]}], "+", 
+               "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Alpha]5W", " ", 
               RowBox[{"PR5", "[", 
                RowBox[{
@@ -12489,7 +13139,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{"-", "j"}], ",", 
                 RowBox[{"-", "g"}], ",", 
                 RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-               "]"}]}], "+", 
+               "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Alpha]6W", " ", 
               RowBox[{"PR6", "[", 
                RowBox[{
@@ -12511,6 +13161,8 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
            RowBox[{"CD", "[", 
             RowBox[{"-", "v"}], "]"}], "[", 
            RowBox[{
+            RowBox[{"Lapse", "[", "]"}], 
+            RowBox[{"J", "[", "]"}], 
             RowBox[{"R", "[", 
              RowBox[{"i", ",", "j", ",", 
               RowBox[{"-", "m"}], ",", 
@@ -12528,7 +13180,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "j"}], ",", 
                  RowBox[{"-", "g"}], ",", 
                  RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}],
-                 "]"}]}], "+", 
+                 "]"}]}], "+", "\[IndentingNewLine]", 
               RowBox[{"\[Alpha]2W", " ", 
                RowBox[{"PR2", "[", 
                 RowBox[{
@@ -12536,7 +13188,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "j"}], ",", 
                  RowBox[{"-", "g"}], ",", 
                  RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}],
-                 "]"}]}], "+", 
+                 "]"}]}], "+", "\[IndentingNewLine]", 
               RowBox[{"\[Alpha]3W", " ", 
                RowBox[{"PR3", "[", 
                 RowBox[{
@@ -12544,7 +13196,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "j"}], ",", 
                  RowBox[{"-", "g"}], ",", 
                  RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}],
-                 "]"}]}], "+", 
+                 "]"}]}], "+", "\[IndentingNewLine]", 
               RowBox[{"\[Alpha]4W", " ", 
                RowBox[{"PR4", "[", 
                 RowBox[{
@@ -12552,7 +13204,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "j"}], ",", 
                  RowBox[{"-", "g"}], ",", 
                  RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}],
-                 "]"}]}], "+", 
+                 "]"}]}], "+", "\[IndentingNewLine]", 
               RowBox[{"\[Alpha]5W", " ", 
                RowBox[{"PR5", "[", 
                 RowBox[{
@@ -12560,7 +13212,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{"-", "j"}], ",", 
                  RowBox[{"-", "g"}], ",", 
                  RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}],
-                 "]"}]}], "+", 
+                 "]"}]}], "+", "\[IndentingNewLine]", 
               RowBox[{"\[Alpha]6W", " ", 
                RowBox[{"PR6", "[", 
                 RowBox[{
@@ -12584,6 +13236,8 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
             RowBox[{"CD", "[", 
              RowBox[{"-", "v"}], "]"}], "[", 
             RowBox[{
+             RowBox[{"Lapse", "[", "]"}], 
+             RowBox[{"J", "[", "]"}], 
              RowBox[{"R", "[", 
               RowBox[{"i", ",", "j", ",", 
                RowBox[{"-", "m"}], ",", 
@@ -12601,7 +13255,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"-", "j"}], ",", 
                   RowBox[{"-", "g"}], ",", 
                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                  "d"}], "]"}]}], "+", 
+                  "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                RowBox[{"\[Alpha]2W", " ", 
                 RowBox[{"PR2", "[", 
                  RowBox[{
@@ -12609,7 +13263,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"-", "j"}], ",", 
                   RowBox[{"-", "g"}], ",", 
                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                  "d"}], "]"}]}], "+", 
+                  "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                RowBox[{"\[Alpha]3W", " ", 
                 RowBox[{"PR3", "[", 
                  RowBox[{
@@ -12617,7 +13271,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"-", "j"}], ",", 
                   RowBox[{"-", "g"}], ",", 
                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                  "d"}], "]"}]}], "+", 
+                  "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                RowBox[{"\[Alpha]4W", " ", 
                 RowBox[{"PR4", "[", 
                  RowBox[{
@@ -12625,7 +13279,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"-", "j"}], ",", 
                   RowBox[{"-", "g"}], ",", 
                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                  "d"}], "]"}]}], "+", 
+                  "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                RowBox[{"\[Alpha]5W", " ", 
                 RowBox[{"PR5", "[", 
                  RowBox[{
@@ -12633,7 +13287,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                   RowBox[{"-", "j"}], ",", 
                   RowBox[{"-", "g"}], ",", 
                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                  "d"}], "]"}]}], "+", 
+                  "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                RowBox[{"\[Alpha]6W", " ", 
                 RowBox[{"PR6", "[", 
                  RowBox[{
@@ -12650,9 +13304,88 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
              RowBox[{"-", "d"}], ",", 
              RowBox[{"-", "x"}], ",", 
              RowBox[{"-", "y"}], ",", 
-             RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], ")"}]}], "/.", 
-       "TotalSolutions"}], "//", "ToCanonical"}], "//", "CollectTensors"}]}], 
-   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"CD", "[", 
+            RowBox[{"-", "w"}], "]"}], "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"CD", "[", 
+              RowBox[{"-", "v"}], "]"}], "[", 
+             RowBox[{
+              RowBox[{"Lapse", "[", "]"}], 
+              RowBox[{"J", "[", "]"}], 
+              RowBox[{"R", "[", 
+               RowBox[{"i", ",", "j", ",", 
+                RowBox[{"-", "m"}], ",", 
+                RowBox[{"-", "n"}]}], "]"}], 
+              RowBox[{"PPara", "[", 
+               RowBox[{"m", ",", "g"}], "]"}], 
+              RowBox[{"PPara", "[", 
+               RowBox[{"n", ",", "h"}], "]"}], 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"\[Alpha]1W", " ", 
+                 RowBox[{"PR1", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "j"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                RowBox[{"\[Alpha]2W", " ", 
+                 RowBox[{"PR2", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "j"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                RowBox[{"\[Alpha]3W", " ", 
+                 RowBox[{"PR3", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "j"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                RowBox[{"\[Alpha]4W", " ", 
+                 RowBox[{"PR4", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "j"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                RowBox[{"\[Alpha]5W", " ", 
+                 RowBox[{"PR5", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "j"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                RowBox[{"\[Alpha]6W", " ", 
+                 RowBox[{"PR6", "[", 
+                  RowBox[{
+                   RowBox[{"-", "i"}], ",", 
+                   RowBox[{"-", "j"}], ",", 
+                   RowBox[{"-", "g"}], ",", 
+                   RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                   "d"}], "]"}]}]}], ")"}]}], "]"}], 
+            RowBox[{"RDS3", "[", 
+             RowBox[{
+              RowBox[{"-", "a"}], ",", 
+              RowBox[{"-", "b"}], ",", 
+              RowBox[{"-", "c"}], ",", 
+              RowBox[{"-", "d"}], ",", 
+              RowBox[{"-", "x"}], ",", 
+              RowBox[{"-", "y"}], ",", 
+              RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], "]"}]}], 
+         ")"}]}], "/.", "TotalSolutions"}], "//", "ToCanonical"}], "//", 
+     "CollectTensors"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
    "PB", " ", "on", " ", "the", " ", "measure", " ", "factor", " ", "in", " ",
@@ -12678,17 +13411,20 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{
                  RowBox[{"PhiB0p", "[", "]"}], 
                  RowBox[{"PhiB0p", "[", "]"}]}], ")"}]}], "+", 
+              "\[IndentingNewLine]", 
               RowBox[{"\[Omega]B1p", " ", 
                RowBox[{"PhiB1p", "[", 
                 RowBox[{
                  RowBox[{"-", "a"}], ",", 
                  RowBox[{"-", "b"}]}], "]"}], 
                RowBox[{"PhiB1p", "[", 
-                RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
+              
               RowBox[{"\[Omega]B1m", " ", 
                RowBox[{"PhiB1m", "[", 
                 RowBox[{"-", "a"}], "]"}], 
                RowBox[{"PhiB1m", "[", "a", "]"}]}], "+", 
+              "\[IndentingNewLine]", 
               RowBox[{"\[Omega]B2p", " ", 
                RowBox[{"PhiB2p", "[", 
                 RowBox[{
@@ -12704,10 +13440,12 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{
                  RowBox[{"\[Omega]A0p", " ", 
                   RowBox[{"PhiA0p", "[", "]"}], 
-                  RowBox[{"PhiA0p", "[", "]"}]}], "+", 
+                  RowBox[{"PhiA0p", "[", "]"}]}], "+", "\[IndentingNewLine]", 
+                 
                  RowBox[{"\[Omega]A0m", " ", 
                   RowBox[{"PhiA0m", "[", "]"}], 
-                  RowBox[{"PhiA0m", "[", "]"}]}], "+", 
+                  RowBox[{"PhiA0m", "[", "]"}]}], "+", "\[IndentingNewLine]", 
+                 
                  RowBox[{"\[Omega]A1p", " ", 
                   RowBox[{"PhiA1p", "[", 
                    RowBox[{
@@ -12715,10 +13453,12 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "b"}]}], "]"}], 
                   RowBox[{"PhiA1p", "[", 
                    RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                 "\[IndentingNewLine]", 
                  RowBox[{"\[Omega]A1m", " ", 
                   RowBox[{"PhiA1m", "[", 
                    RowBox[{"-", "a"}], "]"}], 
                   RowBox[{"PhiA1m", "[", "a", "]"}]}], "+", 
+                 "\[IndentingNewLine]", 
                  RowBox[{"\[Omega]A2p", " ", 
                   RowBox[{"PhiA2p", "[", 
                    RowBox[{
@@ -12726,6 +13466,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "b"}]}], "]"}], 
                   RowBox[{"PhiA2p", "[", 
                    RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                 "\[IndentingNewLine]", 
                  RowBox[{"\[Omega]A2m", " ", 
                   RowBox[{"PhiA2m", "[", 
                    RowBox[{
@@ -12734,7 +13475,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "c"}]}], "]"}], 
                   RowBox[{"PhiA2m", "[", 
                    RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]}], ")"}]}]}], 
-             ")"}]}], "-", 
+             ")"}]}], "-", "\[IndentingNewLine]", 
            RowBox[{"(", 
             RowBox[{
              RowBox[{
@@ -12754,14 +13495,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                    RowBox[{"-", "i"}], ",", 
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
-                  "]"}]}], "+", 
+                  "]"}]}], "+", "\[IndentingNewLine]", 
                 RowBox[{"\[Beta]2W", " ", 
                  RowBox[{"PT2", "[", 
                   RowBox[{
                    RowBox[{"-", "i"}], ",", 
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
-                  "]"}]}], "+", 
+                  "]"}]}], "+", "\[IndentingNewLine]", 
                 RowBox[{"\[Beta]3W", " ", 
                  RowBox[{"PT3", "[", 
                   RowBox[{
@@ -12769,11 +13510,17 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
                   "]"}]}]}], ")"}], 
+              RowBox[{"PPara", "[", 
+               RowBox[{
+                RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+              RowBox[{"PPara", "[", 
+               RowBox[{
+                RowBox[{"-", "d"}], ",", "q"}], "]"}], 
               RowBox[{"T", "[", 
                RowBox[{
                 RowBox[{"-", "a"}], ",", 
-                RowBox[{"-", "c"}], ",", 
-                RowBox[{"-", "d"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
+                RowBox[{"-", "p"}], ",", 
+                RowBox[{"-", "q"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{"R", "[", 
                RowBox[{"i", ",", "j", ",", 
@@ -12792,7 +13539,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                    RowBox[{"-", "j"}], ",", 
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                   "d"}], "]"}]}], "+", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                 RowBox[{"\[Alpha]2W", " ", 
                  RowBox[{"PR2", "[", 
                   RowBox[{
@@ -12800,7 +13547,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                    RowBox[{"-", "j"}], ",", 
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                   "d"}], "]"}]}], "+", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                 RowBox[{"\[Alpha]3W", " ", 
                  RowBox[{"PR3", "[", 
                   RowBox[{
@@ -12808,7 +13555,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                    RowBox[{"-", "j"}], ",", 
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                   "d"}], "]"}]}], "+", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                 RowBox[{"\[Alpha]4W", " ", 
                  RowBox[{"PR4", "[", 
                   RowBox[{
@@ -12816,7 +13563,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                    RowBox[{"-", "j"}], ",", 
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                   "d"}], "]"}]}], "+", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                 RowBox[{"\[Alpha]5W", " ", 
                  RowBox[{"PR5", "[", 
                   RowBox[{
@@ -12824,7 +13571,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                    RowBox[{"-", "j"}], ",", 
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                   "d"}], "]"}]}], "+", 
+                   "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                 RowBox[{"\[Alpha]6W", " ", 
                  RowBox[{"PR6", "[", 
                   RowBox[{
@@ -12833,12 +13580,18 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                    RowBox[{"-", "g"}], ",", 
                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
                    "d"}], "]"}]}]}], ")"}], 
+              RowBox[{"PPara", "[", 
+               RowBox[{
+                RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+              RowBox[{"PPara", "[", 
+               RowBox[{
+                RowBox[{"-", "d"}], ",", "q"}], "]"}], 
               RowBox[{"R", "[", 
                RowBox[{
                 RowBox[{"-", "a"}], ",", 
                 RowBox[{"-", "b"}], ",", 
-                RowBox[{"-", "c"}], ",", 
-                RowBox[{"-", "d"}]}], "]"}]}]}], ")"}]}], ")"}], 
+                RowBox[{"-", "p"}], ",", 
+                RowBox[{"-", "q"}]}], "]"}]}]}], ")"}]}], ")"}], 
          RowBox[{"JD", "[", 
           RowBox[{
            RowBox[{"-", "x"}], ",", 
@@ -12860,17 +13613,19 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{
                   RowBox[{"PhiB0p", "[", "]"}], 
                   RowBox[{"PhiB0p", "[", "]"}]}], ")"}]}], "+", 
+               "\[IndentingNewLine]", 
                RowBox[{"\[Omega]B1p", " ", 
                 RowBox[{"PhiB1p", "[", 
                  RowBox[{
                   RowBox[{"-", "a"}], ",", 
                   RowBox[{"-", "b"}]}], "]"}], 
                 RowBox[{"PhiB1p", "[", 
-                 RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                 RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
                RowBox[{"\[Omega]B1m", " ", 
                 RowBox[{"PhiB1m", "[", 
                  RowBox[{"-", "a"}], "]"}], 
                 RowBox[{"PhiB1m", "[", "a", "]"}]}], "+", 
+               "\[IndentingNewLine]", 
                RowBox[{"\[Omega]B2p", " ", 
                 RowBox[{"PhiB2p", "[", 
                  RowBox[{
@@ -12885,10 +13640,10 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{
                   RowBox[{"\[Omega]A0p", " ", 
                    RowBox[{"PhiA0p", "[", "]"}], 
-                   RowBox[{"PhiA0p", "[", "]"}]}], "+", 
+                   RowBox[{"PhiA0p", "[", "]"}]}], "+", "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A0m", " ", 
                    RowBox[{"PhiA0m", "[", "]"}], 
-                   RowBox[{"PhiA0m", "[", "]"}]}], "+", 
+                   RowBox[{"PhiA0m", "[", "]"}]}], "+", "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A1p", " ", 
                    RowBox[{"PhiA1p", "[", 
                     RowBox[{
@@ -12896,10 +13651,12 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "b"}]}], "]"}], 
                    RowBox[{"PhiA1p", "[", 
                     RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                  "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A1m", " ", 
                    RowBox[{"PhiA1m", "[", 
                     RowBox[{"-", "a"}], "]"}], 
                    RowBox[{"PhiA1m", "[", "a", "]"}]}], "+", 
+                  "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A2p", " ", 
                    RowBox[{"PhiA2p", "[", 
                     RowBox[{
@@ -12907,6 +13664,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "b"}]}], "]"}], 
                    RowBox[{"PhiA2p", "[", 
                     RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                  "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A2m", " ", 
                    RowBox[{"PhiA2m", "[", 
                     RowBox[{
@@ -12915,7 +13673,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "c"}]}], "]"}], 
                    RowBox[{"PhiA2m", "[", 
                     RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]}], ")"}]}]}], 
-              ")"}]}], "-", 
+              ")"}]}], "-", "\[IndentingNewLine]", 
             RowBox[{"(", 
              RowBox[{
               RowBox[{
@@ -12935,14 +13693,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "i"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
-                   "]"}]}], "+", 
+                   "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Beta]2W", " ", 
                   RowBox[{"PT2", "[", 
                    RowBox[{
                     RowBox[{"-", "i"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
-                   "]"}]}], "+", 
+                   "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Beta]3W", " ", 
                   RowBox[{"PT3", "[", 
                    RowBox[{
@@ -12950,11 +13708,17 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
                    "]"}]}]}], ")"}], 
+               RowBox[{"PPara", "[", 
+                RowBox[{
+                 RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+               RowBox[{"PPara", "[", 
+                RowBox[{
+                 RowBox[{"-", "d"}], ",", "q"}], "]"}], 
                RowBox[{"T", "[", 
                 RowBox[{
                  RowBox[{"-", "a"}], ",", 
-                 RowBox[{"-", "c"}], ",", 
-                 RowBox[{"-", "d"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
+                 RowBox[{"-", "p"}], ",", 
+                 RowBox[{"-", "q"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
               RowBox[{
                RowBox[{"R", "[", 
                 RowBox[{"i", ",", "j", ",", 
@@ -12973,7 +13737,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]2W", " ", 
                   RowBox[{"PR2", "[", 
                    RowBox[{
@@ -12981,7 +13745,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]3W", " ", 
                   RowBox[{"PR3", "[", 
                    RowBox[{
@@ -12989,7 +13753,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]4W", " ", 
                   RowBox[{"PR4", "[", 
                    RowBox[{
@@ -12997,7 +13761,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]5W", " ", 
                   RowBox[{"PR5", "[", 
                    RowBox[{
@@ -13005,7 +13769,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]6W", " ", 
                   RowBox[{"PR6", "[", 
                    RowBox[{
@@ -13014,12 +13778,18 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
                     "d"}], "]"}]}]}], ")"}], 
+               RowBox[{"PPara", "[", 
+                RowBox[{
+                 RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+               RowBox[{"PPara", "[", 
+                RowBox[{
+                 RowBox[{"-", "d"}], ",", "q"}], "]"}], 
                RowBox[{"R", "[", 
                 RowBox[{
                  RowBox[{"-", "a"}], ",", 
                  RowBox[{"-", "b"}], ",", 
-                 RowBox[{"-", "c"}], ",", 
-                 RowBox[{"-", "d"}]}], "]"}]}]}], ")"}]}], ")"}], 
+                 RowBox[{"-", "p"}], ",", 
+                 RowBox[{"-", "q"}]}], "]"}]}]}], ")"}]}], ")"}], 
           RowBox[{"JDS1", "[", 
            RowBox[{
             RowBox[{"-", "x"}], ",", 
@@ -13042,17 +13812,19 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{
                   RowBox[{"PhiB0p", "[", "]"}], 
                   RowBox[{"PhiB0p", "[", "]"}]}], ")"}]}], "+", 
+               "\[IndentingNewLine]", 
                RowBox[{"\[Omega]B1p", " ", 
                 RowBox[{"PhiB1p", "[", 
                  RowBox[{
                   RowBox[{"-", "a"}], ",", 
                   RowBox[{"-", "b"}]}], "]"}], 
                 RowBox[{"PhiB1p", "[", 
-                 RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                 RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
                RowBox[{"\[Omega]B1m", " ", 
                 RowBox[{"PhiB1m", "[", 
                  RowBox[{"-", "a"}], "]"}], 
                 RowBox[{"PhiB1m", "[", "a", "]"}]}], "+", 
+               "\[IndentingNewLine]", 
                RowBox[{"\[Omega]B2p", " ", 
                 RowBox[{"PhiB2p", "[", 
                  RowBox[{
@@ -13067,10 +13839,10 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                  RowBox[{
                   RowBox[{"\[Omega]A0p", " ", 
                    RowBox[{"PhiA0p", "[", "]"}], 
-                   RowBox[{"PhiA0p", "[", "]"}]}], "+", 
+                   RowBox[{"PhiA0p", "[", "]"}]}], "+", "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A0m", " ", 
                    RowBox[{"PhiA0m", "[", "]"}], 
-                   RowBox[{"PhiA0m", "[", "]"}]}], "+", 
+                   RowBox[{"PhiA0m", "[", "]"}]}], "+", "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A1p", " ", 
                    RowBox[{"PhiA1p", "[", 
                     RowBox[{
@@ -13078,10 +13850,12 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "b"}]}], "]"}], 
                    RowBox[{"PhiA1p", "[", 
                     RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                  "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A1m", " ", 
                    RowBox[{"PhiA1m", "[", 
                     RowBox[{"-", "a"}], "]"}], 
                    RowBox[{"PhiA1m", "[", "a", "]"}]}], "+", 
+                  "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A2p", " ", 
                    RowBox[{"PhiA2p", "[", 
                     RowBox[{
@@ -13089,6 +13863,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "b"}]}], "]"}], 
                    RowBox[{"PhiA2p", "[", 
                     RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                  "\[IndentingNewLine]", 
                   RowBox[{"\[Omega]A2m", " ", 
                    RowBox[{"PhiA2m", "[", 
                     RowBox[{
@@ -13097,7 +13872,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "c"}]}], "]"}], 
                    RowBox[{"PhiA2m", "[", 
                     RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]}], ")"}]}]}], 
-              ")"}]}], "-", 
+              ")"}]}], "-", "\[IndentingNewLine]", 
             RowBox[{"(", 
              RowBox[{
               RowBox[{
@@ -13117,14 +13892,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "i"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
-                   "]"}]}], "+", 
+                   "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Beta]2W", " ", 
                   RowBox[{"PT2", "[", 
                    RowBox[{
                     RowBox[{"-", "i"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
-                   "]"}]}], "+", 
+                   "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Beta]3W", " ", 
                   RowBox[{"PT3", "[", 
                    RowBox[{
@@ -13132,11 +13907,17 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
                    "]"}]}]}], ")"}], 
+               RowBox[{"PPara", "[", 
+                RowBox[{
+                 RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+               RowBox[{"PPara", "[", 
+                RowBox[{
+                 RowBox[{"-", "d"}], ",", "q"}], "]"}], 
                RowBox[{"T", "[", 
                 RowBox[{
                  RowBox[{"-", "a"}], ",", 
-                 RowBox[{"-", "c"}], ",", 
-                 RowBox[{"-", "d"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
+                 RowBox[{"-", "p"}], ",", 
+                 RowBox[{"-", "q"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
               RowBox[{
                RowBox[{"R", "[", 
                 RowBox[{"i", ",", "j", ",", 
@@ -13155,7 +13936,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]2W", " ", 
                   RowBox[{"PR2", "[", 
                    RowBox[{
@@ -13163,7 +13944,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]3W", " ", 
                   RowBox[{"PR3", "[", 
                    RowBox[{
@@ -13171,7 +13952,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]4W", " ", 
                   RowBox[{"PR4", "[", 
                    RowBox[{
@@ -13179,7 +13960,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]5W", " ", 
                   RowBox[{"PR5", "[", 
                    RowBox[{
@@ -13187,7 +13968,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "j"}], ",", 
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
-                    "d"}], "]"}]}], "+", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
                  RowBox[{"\[Alpha]6W", " ", 
                   RowBox[{"PR6", "[", 
                    RowBox[{
@@ -13196,17 +13977,229 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                     RowBox[{"-", "g"}], ",", 
                     RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
                     "d"}], "]"}]}]}], ")"}], 
+               RowBox[{"PPara", "[", 
+                RowBox[{
+                 RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+               RowBox[{"PPara", "[", 
+                RowBox[{
+                 RowBox[{"-", "d"}], ",", "q"}], "]"}], 
                RowBox[{"R", "[", 
                 RowBox[{
                  RowBox[{"-", "a"}], ",", 
                  RowBox[{"-", "b"}], ",", 
-                 RowBox[{"-", "c"}], ",", 
-                 RowBox[{"-", "d"}]}], "]"}]}]}], ")"}]}], ")"}], "]"}], 
+                 RowBox[{"-", "p"}], ",", 
+                 RowBox[{"-", "q"}]}], "]"}]}]}], ")"}]}], ")"}], "]"}], 
          RowBox[{"JDS2", "[", 
           RowBox[{
            RowBox[{"-", "x"}], ",", 
            RowBox[{"-", "y"}], ",", 
-           RowBox[{"-", "z"}], ",", "v"}], "]"}]}]}], "/.", 
+           RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"CD", "[", 
+          RowBox[{"-", "w"}], "]"}], "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"CD", "[", 
+            RowBox[{"-", "v"}], "]"}], "[", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", "16"}], ")"}], 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"\[Omega]B0p", " ", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"PhiB0p", "[", "]"}], 
+                   RowBox[{"PhiB0p", "[", "]"}]}], ")"}]}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"\[Omega]B1p", " ", 
+                 RowBox[{"PhiB1p", "[", 
+                  RowBox[{
+                   RowBox[{"-", "a"}], ",", 
+                   RowBox[{"-", "b"}]}], "]"}], 
+                 RowBox[{"PhiB1p", "[", 
+                  RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"\[Omega]B1m", " ", 
+                 RowBox[{"PhiB1m", "[", 
+                  RowBox[{"-", "a"}], "]"}], 
+                 RowBox[{"PhiB1m", "[", "a", "]"}]}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"\[Omega]B2p", " ", 
+                 RowBox[{"PhiB2p", "[", 
+                  RowBox[{
+                   RowBox[{"-", "a"}], ",", 
+                   RowBox[{"-", "b"}]}], "]"}], 
+                 RowBox[{"PhiB2p", "[", 
+                  RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"1", "/", "4"}], ")"}], 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"\[Omega]A0p", " ", 
+                    RowBox[{"PhiA0p", "[", "]"}], 
+                    RowBox[{"PhiA0p", "[", "]"}]}], "+", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"\[Omega]A0m", " ", 
+                    RowBox[{"PhiA0m", "[", "]"}], 
+                    RowBox[{"PhiA0m", "[", "]"}]}], "+", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"\[Omega]A1p", " ", 
+                    RowBox[{"PhiA1p", "[", 
+                    RowBox[{
+                    RowBox[{"-", "a"}], ",", 
+                    RowBox[{"-", "b"}]}], "]"}], 
+                    RowBox[{"PhiA1p", "[", 
+                    RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"\[Omega]A1m", " ", 
+                    RowBox[{"PhiA1m", "[", 
+                    RowBox[{"-", "a"}], "]"}], 
+                    RowBox[{"PhiA1m", "[", "a", "]"}]}], "+", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"\[Omega]A2p", " ", 
+                    RowBox[{"PhiA2p", "[", 
+                    RowBox[{
+                    RowBox[{"-", "a"}], ",", 
+                    RowBox[{"-", "b"}]}], "]"}], 
+                    RowBox[{"PhiA2p", "[", 
+                    RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"\[Omega]A2m", " ", 
+                    RowBox[{"PhiA2m", "[", 
+                    RowBox[{
+                    RowBox[{"-", "a"}], ",", 
+                    RowBox[{"-", "b"}], ",", 
+                    RowBox[{"-", "c"}]}], "]"}], 
+                    RowBox[{"PhiA2m", "[", 
+                    RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]}], ")"}]}]}], 
+               ")"}]}], "-", "\[IndentingNewLine]", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"T", "[", 
+                 RowBox[{"i", ",", 
+                  RowBox[{"-", "m"}], ",", 
+                  RowBox[{"-", "n"}]}], "]"}], 
+                RowBox[{"PPara", "[", 
+                 RowBox[{"m", ",", "g"}], "]"}], 
+                RowBox[{"PPara", "[", 
+                 RowBox[{"n", ",", "h"}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"\[Beta]1W", " ", 
+                   RowBox[{"PT1", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
+                    "]"}]}], "+", "\[IndentingNewLine]", 
+                  RowBox[{"\[Beta]2W", " ", 
+                   RowBox[{"PT2", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
+                    "]"}]}], "+", "\[IndentingNewLine]", 
+                  RowBox[{"\[Beta]3W", " ", 
+                   RowBox[{"PT3", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], 
+                    "]"}]}]}], ")"}], 
+                RowBox[{"PPara", "[", 
+                 RowBox[{
+                  RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+                RowBox[{"PPara", "[", 
+                 RowBox[{
+                  RowBox[{"-", "d"}], ",", "q"}], "]"}], 
+                RowBox[{"T", "[", 
+                 RowBox[{
+                  RowBox[{"-", "a"}], ",", 
+                  RowBox[{"-", "p"}], ",", 
+                  RowBox[{"-", "q"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"R", "[", 
+                 RowBox[{"i", ",", "j", ",", 
+                  RowBox[{"-", "m"}], ",", 
+                  RowBox[{"-", "n"}]}], "]"}], 
+                RowBox[{"PPara", "[", 
+                 RowBox[{"m", ",", "g"}], "]"}], 
+                RowBox[{"PPara", "[", 
+                 RowBox[{"n", ",", "h"}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"\[Alpha]1W", " ", 
+                   RowBox[{"PR1", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "j"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                  RowBox[{"\[Alpha]2W", " ", 
+                   RowBox[{"PR2", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "j"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                  RowBox[{"\[Alpha]3W", " ", 
+                   RowBox[{"PR3", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "j"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                  RowBox[{"\[Alpha]4W", " ", 
+                   RowBox[{"PR4", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "j"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                  RowBox[{"\[Alpha]5W", " ", 
+                   RowBox[{"PR5", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "j"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                    "d"}], "]"}]}], "+", "\[IndentingNewLine]", 
+                  RowBox[{"\[Alpha]6W", " ", 
+                   RowBox[{"PR6", "[", 
+                    RowBox[{
+                    RowBox[{"-", "i"}], ",", 
+                    RowBox[{"-", "j"}], ",", 
+                    RowBox[{"-", "g"}], ",", 
+                    RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", 
+                    "d"}], "]"}]}]}], ")"}], 
+                RowBox[{"PPara", "[", 
+                 RowBox[{
+                  RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+                RowBox[{"PPara", "[", 
+                 RowBox[{
+                  RowBox[{"-", "d"}], ",", "q"}], "]"}], 
+                RowBox[{"R", "[", 
+                 RowBox[{
+                  RowBox[{"-", "a"}], ",", 
+                  RowBox[{"-", "b"}], ",", 
+                  RowBox[{"-", "p"}], ",", 
+                  RowBox[{"-", "q"}]}], "]"}]}]}], ")"}]}], ")"}], "]"}], 
+          RowBox[{"JDS3", "[", 
+           RowBox[{
+            RowBox[{"-", "x"}], ",", 
+            RowBox[{"-", "y"}], ",", 
+            RowBox[{"-", "z"}], ",", "v", ",", "w"}], "]"}]}], "]"}]}], "/.", 
        "TotalSolutions"}], "//", "ToCanonical"}], "//", "CollectTensors"}]}], 
    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
@@ -13216,20 +14209,170 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
   RowBox[{
    RowBox[{"SurfaceHamiltonian", "=", 
     RowBox[{
-     RowBox[{"QD", "[", 
-      RowBox[{
-       RowBox[{"-", "x"}], ",", 
-       RowBox[{"-", "y"}], ",", 
-       RowBox[{"-", "z"}]}], "]"}], "-", 
      RowBox[{
-      RowBox[{"CD", "[", 
-       RowBox[{"-", "v"}], "]"}], "[", 
-      RowBox[{"QDS1", "[", 
+      RowBox[{"Lapse", "[", "]"}], 
+      RowBox[{"QD", "[", 
        RowBox[{
         RowBox[{"-", "x"}], ",", 
         RowBox[{"-", "y"}], ",", 
-        RowBox[{"-", "z"}], ",", "v"}], "]"}], "]"}]}]}], ";"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"CD", "[", 
+       RowBox[{"-", "v"}], "]"}], "[", 
+      RowBox[{
+       RowBox[{"Lapse", "[", "]"}], 
+       RowBox[{"QDS1", "[", 
+        RowBox[{
+         RowBox[{"-", "x"}], ",", 
+         RowBox[{"-", "y"}], ",", 
+         RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"CD", "[", 
+        RowBox[{"-", "v"}], "]"}], "[", 
+       RowBox[{"Lapse", "[", "]"}], "]"}], 
+      RowBox[{"QDS2", "[", 
+       RowBox[{
+        RowBox[{"-", "x"}], ",", 
+        RowBox[{"-", "y"}], ",", 
+        RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"CD", "[", 
+       RowBox[{"-", "j"}], "]"}], "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"CD", "[", 
+         RowBox[{"-", "v"}], "]"}], "[", 
+        RowBox[{"Lapse", "[", "]"}], "]"}], 
+       RowBox[{"QDS3", "[", 
+        RowBox[{
+         RowBox[{"-", "x"}], ",", 
+         RowBox[{"-", "y"}], ",", 
+         RowBox[{"-", "z"}], ",", "v", ",", "j"}], "]"}]}], "]"}], "-", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"V", "[", "k", "]"}], 
+        RowBox[{"G3", "[", 
+         RowBox[{"m", ",", 
+          RowBox[{"-", "n"}]}], "]"}], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"CD", "[", 
+            RowBox[{"-", "m"}], "]"}], "[", 
+           RowBox[{"BPi", "[", 
+            RowBox[{
+             RowBox[{"-", "k"}], ",", "n"}], "]"}], "]"}], "-", 
+          RowBox[{
+           RowBox[{"A", "[", 
+            RowBox[{"w", ",", 
+             RowBox[{"-", "k"}], ",", 
+             RowBox[{"-", "m"}]}], "]"}], 
+           RowBox[{"BPi", "[", 
+            RowBox[{
+             RowBox[{"-", "w"}], ",", "n"}], "]"}]}]}], ")"}], 
+        RowBox[{"LapseD", "[", 
+         RowBox[{
+          RowBox[{"-", "x"}], ",", 
+          RowBox[{"-", "y"}], ",", 
+          RowBox[{"-", "z"}]}], "]"}]}], "-", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"CD", "[", 
+         RowBox[{"-", "v"}], "]"}], "[", 
+        RowBox[{
+         RowBox[{"V", "[", "k", "]"}], 
+         RowBox[{"G3", "[", 
+          RowBox[{"m", ",", 
+           RowBox[{"-", "n"}]}], "]"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"CD", "[", 
+             RowBox[{"-", "m"}], "]"}], "[", 
+            RowBox[{"BPi", "[", 
+             RowBox[{
+              RowBox[{"-", "k"}], ",", "n"}], "]"}], "]"}], "-", 
+           RowBox[{
+            RowBox[{"A", "[", 
+             RowBox[{"w", ",", 
+              RowBox[{"-", "k"}], ",", 
+              RowBox[{"-", "m"}]}], "]"}], 
+            RowBox[{"BPi", "[", 
+             RowBox[{
+              RowBox[{"-", "w"}], ",", "n"}], "]"}]}]}], ")"}], 
+         RowBox[{"LapseDS1", "[", 
+          RowBox[{
+           RowBox[{"-", "x"}], ",", 
+           RowBox[{"-", "y"}], ",", 
+           RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "]"}], "+", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"CD", "[", 
+          RowBox[{"-", "v"}], "]"}], "[", 
+         RowBox[{
+          RowBox[{"V", "[", "k", "]"}], 
+          RowBox[{"G3", "[", 
+           RowBox[{"m", ",", 
+            RowBox[{"-", "n"}]}], "]"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"CD", "[", 
+              RowBox[{"-", "m"}], "]"}], "[", 
+             RowBox[{"BPi", "[", 
+              RowBox[{
+               RowBox[{"-", "k"}], ",", "n"}], "]"}], "]"}], "-", 
+            RowBox[{
+             RowBox[{"A", "[", 
+              RowBox[{"w", ",", 
+               RowBox[{"-", "k"}], ",", 
+               RowBox[{"-", "m"}]}], "]"}], 
+             RowBox[{"BPi", "[", 
+              RowBox[{
+               RowBox[{"-", "w"}], ",", "n"}], "]"}]}]}], ")"}]}], "]"}], 
+        RowBox[{"LapseDS2", "[", 
+         RowBox[{
+          RowBox[{"-", "x"}], ",", 
+          RowBox[{"-", "y"}], ",", 
+          RowBox[{"-", "z"}], ",", "v"}], "]"}]}], "-", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"CD", "[", 
+         RowBox[{"-", "j"}], "]"}], "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"CD", "[", 
+           RowBox[{"-", "v"}], "]"}], "[", 
+          RowBox[{
+           RowBox[{"V", "[", "k", "]"}], 
+           RowBox[{"G3", "[", 
+            RowBox[{"m", ",", 
+             RowBox[{"-", "n"}]}], "]"}], 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"CD", "[", 
+               RowBox[{"-", "m"}], "]"}], "[", 
+              RowBox[{"BPi", "[", 
+               RowBox[{
+                RowBox[{"-", "k"}], ",", "n"}], "]"}], "]"}], "-", 
+             RowBox[{
+              RowBox[{"A", "[", 
+               RowBox[{"w", ",", 
+                RowBox[{"-", "k"}], ",", 
+                RowBox[{"-", "m"}]}], "]"}], 
+              RowBox[{"BPi", "[", 
+               RowBox[{
+                RowBox[{"-", "w"}], ",", "n"}], "]"}]}]}], ")"}]}], "]"}], 
+         RowBox[{"LapseDS3", "[", 
+          RowBox[{
+           RowBox[{"-", "x"}], ",", 
+           RowBox[{"-", "y"}], ",", 
+           RowBox[{"-", "z"}], ",", "v", ",", "j"}], "]"}]}], "]"}]}], 
+      ")"}]}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{"Super", "-", "Hamiltonian"}], "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
@@ -13254,17 +14397,18 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
             RowBox[{
              RowBox[{"PhiB0p", "[", "]"}], 
              RowBox[{"PhiB0p", "[", "]"}]}], ")"}]}], "+", 
+          "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B1p", " ", 
            RowBox[{"PhiB1p", "[", 
             RowBox[{
              RowBox[{"-", "a"}], ",", 
              RowBox[{"-", "b"}]}], "]"}], 
            RowBox[{"PhiB1p", "[", 
-            RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+            RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B1m", " ", 
            RowBox[{"PhiB1m", "[", 
             RowBox[{"-", "a"}], "]"}], 
-           RowBox[{"PhiB1m", "[", "a", "]"}]}], "+", 
+           RowBox[{"PhiB1m", "[", "a", "]"}]}], "+", "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B2p", " ", 
            RowBox[{"PhiB2p", "[", 
             RowBox[{
@@ -13279,28 +14423,28 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
             RowBox[{
              RowBox[{"\[Omega]A0p", " ", 
               RowBox[{"PhiA0p", "[", "]"}], 
-              RowBox[{"PhiA0p", "[", "]"}]}], "+", 
+              RowBox[{"PhiA0p", "[", "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A0m", " ", 
               RowBox[{"PhiA0m", "[", "]"}], 
-              RowBox[{"PhiA0m", "[", "]"}]}], "+", 
+              RowBox[{"PhiA0m", "[", "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A1p", " ", 
               RowBox[{"PhiA1p", "[", 
                RowBox[{
                 RowBox[{"-", "a"}], ",", 
                 RowBox[{"-", "b"}]}], "]"}], 
               RowBox[{"PhiA1p", "[", 
-               RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+               RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A1m", " ", 
               RowBox[{"PhiA1m", "[", 
                RowBox[{"-", "a"}], "]"}], 
-              RowBox[{"PhiA1m", "[", "a", "]"}]}], "+", 
+              RowBox[{"PhiA1m", "[", "a", "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A2p", " ", 
               RowBox[{"PhiA2p", "[", 
                RowBox[{
                 RowBox[{"-", "a"}], ",", 
                 RowBox[{"-", "b"}]}], "]"}], 
               RowBox[{"PhiA2p", "[", 
-               RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+               RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A2m", " ", 
               RowBox[{"PhiA2m", "[", 
                RowBox[{
@@ -13309,7 +14453,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{"-", "c"}]}], "]"}], 
               RowBox[{"PhiA2m", "[", 
                RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]}], ")"}]}]}], 
-         ")"}]}], "-", 
+         ")"}]}], "-", "\[IndentingNewLine]", 
        RowBox[{"(", 
         RowBox[{
          RowBox[{
@@ -13329,14 +14473,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "i"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}], 
-            "+", 
+            "+", "\[IndentingNewLine]", 
             RowBox[{"\[Beta]2W", " ", 
              RowBox[{"PT2", "[", 
               RowBox[{
                RowBox[{"-", "i"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}], 
-            "+", 
+            "+", "\[IndentingNewLine]", 
             RowBox[{"\[Beta]3W", " ", 
              RowBox[{"PT3", "[", 
               RowBox[{
@@ -13344,11 +14488,17 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}]}], 
            ")"}], 
+          RowBox[{"PPara", "[", 
+           RowBox[{
+            RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+          RowBox[{"PPara", "[", 
+           RowBox[{
+            RowBox[{"-", "d"}], ",", "q"}], "]"}], 
           RowBox[{"T", "[", 
            RowBox[{
             RowBox[{"-", "a"}], ",", 
-            RowBox[{"-", "c"}], ",", 
-            RowBox[{"-", "d"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
+            RowBox[{"-", "p"}], ",", 
+            RowBox[{"-", "q"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"R", "[", 
            RowBox[{"i", ",", "j", ",", 
@@ -13367,7 +14517,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]2W", " ", 
              RowBox[{"PR2", "[", 
               RowBox[{
@@ -13375,7 +14525,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]3W", " ", 
              RowBox[{"PR3", "[", 
               RowBox[{
@@ -13383,7 +14533,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]4W", " ", 
              RowBox[{"PR4", "[", 
               RowBox[{
@@ -13391,7 +14541,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]5W", " ", 
              RowBox[{"PR5", "[", 
               RowBox[{
@@ -13399,7 +14549,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]6W", " ", 
              RowBox[{"PR6", "[", 
               RowBox[{
@@ -13408,12 +14558,18 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
               "]"}]}]}], ")"}], 
+          RowBox[{"PPara", "[", 
+           RowBox[{
+            RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+          RowBox[{"PPara", "[", 
+           RowBox[{
+            RowBox[{"-", "d"}], ",", "q"}], "]"}], 
           RowBox[{"R", "[", 
            RowBox[{
             RowBox[{"-", "a"}], ",", 
             RowBox[{"-", "b"}], ",", 
-            RowBox[{"-", "c"}], ",", 
-            RowBox[{"-", "d"}]}], "]"}]}]}], ")"}]}], ")"}]}], "-", 
+            RowBox[{"-", "p"}], ",", 
+            RowBox[{"-", "q"}]}], "]"}]}]}], ")"}]}], ")"}]}], "-", 
     "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"V", "[", "k", "]"}], 
@@ -13505,17 +14661,18 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
             RowBox[{
              RowBox[{"PhiB0p", "[", "]"}], 
              RowBox[{"PhiB0p", "[", "]"}]}], ")"}]}], "+", 
+          "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B1p", " ", 
            RowBox[{"PhiB1p", "[", 
             RowBox[{
              RowBox[{"-", "a"}], ",", 
              RowBox[{"-", "b"}]}], "]"}], 
            RowBox[{"PhiB1p", "[", 
-            RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+            RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B1m", " ", 
            RowBox[{"PhiB1m", "[", 
             RowBox[{"-", "a"}], "]"}], 
-           RowBox[{"PhiB1m", "[", "a", "]"}]}], "+", 
+           RowBox[{"PhiB1m", "[", "a", "]"}]}], "+", "\[IndentingNewLine]", 
           RowBox[{"\[Omega]B2p", " ", 
            RowBox[{"PhiB2p", "[", 
             RowBox[{
@@ -13530,28 +14687,28 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
             RowBox[{
              RowBox[{"\[Omega]A0p", " ", 
               RowBox[{"PhiA0p", "[", "]"}], 
-              RowBox[{"PhiA0p", "[", "]"}]}], "+", 
+              RowBox[{"PhiA0p", "[", "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A0m", " ", 
               RowBox[{"PhiA0m", "[", "]"}], 
-              RowBox[{"PhiA0m", "[", "]"}]}], "+", 
+              RowBox[{"PhiA0m", "[", "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A1p", " ", 
               RowBox[{"PhiA1p", "[", 
                RowBox[{
                 RowBox[{"-", "a"}], ",", 
                 RowBox[{"-", "b"}]}], "]"}], 
               RowBox[{"PhiA1p", "[", 
-               RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+               RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A1m", " ", 
               RowBox[{"PhiA1m", "[", 
                RowBox[{"-", "a"}], "]"}], 
-              RowBox[{"PhiA1m", "[", "a", "]"}]}], "+", 
+              RowBox[{"PhiA1m", "[", "a", "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A2p", " ", 
               RowBox[{"PhiA2p", "[", 
                RowBox[{
                 RowBox[{"-", "a"}], ",", 
                 RowBox[{"-", "b"}]}], "]"}], 
               RowBox[{"PhiA2p", "[", 
-               RowBox[{"a", ",", "b"}], "]"}]}], "+", 
+               RowBox[{"a", ",", "b"}], "]"}]}], "+", "\[IndentingNewLine]", 
              RowBox[{"\[Omega]A2m", " ", 
               RowBox[{"PhiA2m", "[", 
                RowBox[{
@@ -13560,7 +14717,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                 RowBox[{"-", "c"}]}], "]"}], 
               RowBox[{"PhiA2m", "[", 
                RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]}], ")"}]}]}], 
-         ")"}]}], "-", 
+         ")"}]}], "-", "\[IndentingNewLine]", 
        RowBox[{"(", 
         RowBox[{
          RowBox[{
@@ -13580,14 +14737,14 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "i"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}], 
-            "+", 
+            "+", "\[IndentingNewLine]", 
             RowBox[{"\[Beta]2W", " ", 
              RowBox[{"PT2", "[", 
               RowBox[{
                RowBox[{"-", "i"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}], 
-            "+", 
+            "+", "\[IndentingNewLine]", 
             RowBox[{"\[Beta]3W", " ", 
              RowBox[{"PT3", "[", 
               RowBox[{
@@ -13595,11 +14752,17 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "c", ",", "d"}], "]"}]}]}], 
            ")"}], 
+          RowBox[{"PPara", "[", 
+           RowBox[{
+            RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+          RowBox[{"PPara", "[", 
+           RowBox[{
+            RowBox[{"-", "d"}], ",", "q"}], "]"}], 
           RowBox[{"T", "[", 
            RowBox[{
             RowBox[{"-", "a"}], ",", 
-            RowBox[{"-", "c"}], ",", 
-            RowBox[{"-", "d"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
+            RowBox[{"-", "p"}], ",", 
+            RowBox[{"-", "q"}]}], "]"}]}], "+", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"R", "[", 
            RowBox[{"i", ",", "j", ",", 
@@ -13618,7 +14781,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]2W", " ", 
              RowBox[{"PR2", "[", 
               RowBox[{
@@ -13626,7 +14789,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]3W", " ", 
              RowBox[{"PR3", "[", 
               RowBox[{
@@ -13634,7 +14797,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]4W", " ", 
              RowBox[{"PR4", "[", 
               RowBox[{
@@ -13642,7 +14805,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]5W", " ", 
              RowBox[{"PR5", "[", 
               RowBox[{
@@ -13650,7 +14813,7 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "j"}], ",", 
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
-              "]"}]}], "+", 
+              "]"}]}], "+", "\[IndentingNewLine]", 
             RowBox[{"\[Alpha]6W", " ", 
              RowBox[{"PR6", "[", 
               RowBox[{
@@ -13659,12 +14822,18 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
                RowBox[{"-", "g"}], ",", 
                RowBox[{"-", "h"}], ",", "a", ",", "b", ",", "c", ",", "d"}], 
               "]"}]}]}], ")"}], 
+          RowBox[{"PPara", "[", 
+           RowBox[{
+            RowBox[{"-", "c"}], ",", "p"}], "]"}], 
+          RowBox[{"PPara", "[", 
+           RowBox[{
+            RowBox[{"-", "d"}], ",", "q"}], "]"}], 
           RowBox[{"R", "[", 
            RowBox[{
             RowBox[{"-", "a"}], ",", 
             RowBox[{"-", "b"}], ",", 
-            RowBox[{"-", "c"}], ",", 
-            RowBox[{"-", "d"}]}], "]"}]}]}], ")"}]}], ")"}]}], "-", 
+            RowBox[{"-", "p"}], ",", 
+            RowBox[{"-", "q"}]}], "]"}]}]}], ")"}]}], ")"}]}], "-", 
     "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"V", "[", "k", "]"}], 
@@ -17524,6 +18693,13 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
            RowBox[{"f1a", ",", 
             RowBox[{"J", "[", "]"}]}], "]"}]}], "+", 
          RowBox[{
+          RowBox[{"DLapseDB", "[", 
+           RowBox[{
+            RowBox[{"-", "q"}], ",", "r"}], "]"}], 
+          RowBox[{"VarAction", "[", 
+           RowBox[{"f1a", ",", 
+            RowBox[{"Lapse", "[", "]"}]}], "]"}]}], "+", 
+         RowBox[{
           RowBox[{"DJiDB", "[", 
            RowBox[{
             RowBox[{"-", "q"}], ",", "r"}], "]"}], 
@@ -17564,6 +18740,13 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
           RowBox[{"VarAction", "[", 
            RowBox[{"f2a", ",", 
             RowBox[{"J", "[", "]"}]}], "]"}]}], "+", 
+         RowBox[{
+          RowBox[{"DLapseDB", "[", 
+           RowBox[{
+            RowBox[{"-", "q"}], ",", "r"}], "]"}], 
+          RowBox[{"VarAction", "[", 
+           RowBox[{"f2a", ",", 
+            RowBox[{"Lapse", "[", "]"}]}], "]"}]}], "+", 
          RowBox[{
           RowBox[{"DJiDB", "[", 
            RowBox[{
@@ -18668,8 +19851,6 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
              RowBox[{"-", "e"}], ",", 
              RowBox[{"-", "f"}]}], "]"}]}], ",", "order"}], "]"}]}], ";", 
        "\[IndentingNewLine]", 
-       RowBox[{"Print", "[", "\"\<alph\>\"", "]"}], ";", 
-       "\[IndentingNewLine]", 
        RowBox[{"OmniSubs", "=", 
         RowBox[{"Join", "[", 
          RowBox[{"OmniSubs", ",", 
@@ -18689,8 +19870,6 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
             RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
             RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"Print", "[", "\"\<alph\>\"", "]"}], ";", 
-       "\[IndentingNewLine]", 
        RowBox[{"OmniSubs", "=", 
         RowBox[{"Join", "[", 
          RowBox[{"OmniSubs", ",", 
@@ -18710,8 +19889,6 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
             RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
             RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"Print", "[", "\"\<alph\>\"", "]"}], ";", 
-       "\[IndentingNewLine]", 
        RowBox[{"OmniSubs", "=", 
         RowBox[{"Join", "[", 
          RowBox[{"OmniSubs", ",", 
@@ -18731,8 +19908,25 @@ non-canonical\>\"", ",", "Blue", ",", "10"}], "]"}], "]"}],
             RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
             RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"Print", "[", "\"\<alph\>\"", "]"}], ";", 
-       "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<RDS3[-g,-h,-i,-j,-x1,-y1,-z1,v,z]S1[x1]S2[y1]S3[z1]\>\"\
+", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"Temp", "[", 
+                RowBox[{"[", "4", "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"OmniSubs", "=", 
         RowBox[{"Join", "[", 
          RowBox[{"OmniSubs", ",", 
@@ -18755,8 +19949,6 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
             RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
             RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"Print", "[", "\"\<problematic rule\>\"", "]"}], ";", 
-       "\[IndentingNewLine]", 
        RowBox[{"OmniSubs", "=", 
         RowBox[{"Join", "[", 
          RowBox[{"OmniSubs", ",", 
@@ -18776,6 +19968,28 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
                RowBox[{"Evaluate", "[", 
                 RowBox[{"Temp", "[", 
                  RowBox[{"[", "3", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<CD[-u][RDS3[-g,-h,-i,-j,-x1,-y1,-z1,v,z]]S1[x1]S2[y1]S3[\
+z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"CD", "[", 
+                RowBox[{"-", "u"}], "]"}], "[", 
+               RowBox[{"Evaluate", "[", 
+                RowBox[{"Temp", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
             RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
             RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
@@ -18868,6 +20082,25 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
                RowBox[{"ToExpression", "[", 
                 RowBox[{"StringReplace", "[", 
                  RowBox[{
+                 "\"\<TDS3[-d,-g,-h,-x1,-y1,-z1,v,z]S1[x1]S2[y1]S3[z1]\>\"", 
+                  ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"Temp", "[", 
+                RowBox[{"[", "4", "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
                  "\"\<CD[-u][TDS1[-d,-g,-h,-x1,-y1,-z1,z]]S1[x1]S2[y1]S3[z1]\>\
 \"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
               RowBox[{
@@ -18898,6 +20131,28 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
                RowBox[{"Evaluate", "[", 
                 RowBox[{"Temp", "[", 
                  RowBox[{"[", "3", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<CD[-u][TDS3[-d,-g,-h,-x1,-y1,-z1,v,z]]S1[x1]S2[y1]S3[z1]\
+\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"CD", "[", 
+                RowBox[{"-", "u"}], "]"}], "[", 
+               RowBox[{"Evaluate", "[", 
+                RowBox[{"Temp", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
             RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
             RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
@@ -19000,6 +20255,25 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
                RowBox[{"ToExpression", "[", 
                 RowBox[{"StringReplace", "[", 
                  RowBox[{
+                 "\"\<QDS3[-x1,-y1,-z1,v,z]S1[x1]S2[y1]S3[z1]\>\"", ",", 
+                  "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"Temp", "[", 
+                RowBox[{"[", "4", "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
                  "\"\<CD[-u][QDS1[-x1,-y1,-z1,z]]S1[x1]S2[y1]S3[z1]\>\"", ",",
                    "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
               RowBox[{
@@ -19033,6 +20307,28 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
             RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
             RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<CD[-u][QDS3[-x1,-y1,-z1,v,z]]S1[x1]S2[y1]S3[z1]\>\"", 
+                  ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"CD", "[", 
+                RowBox[{"-", "u"}], "]"}], "[", 
+               RowBox[{"Evaluate", "[", 
+                RowBox[{"Temp", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"Print", "[", 
         RowBox[{"Style", "[", 
          RowBox[{
@@ -19041,7 +20337,9 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
        RowBox[{"Temp", "=", 
         RowBox[{"ConstraintFieldPoissonBracket", "[", 
          RowBox[{"fx", ",", 
-          RowBox[{"J", "[", "]"}], ",", "order"}], "]"}]}], ";", 
+          RowBox[{
+           RowBox[{"Lapse", "[", "]"}], 
+           RowBox[{"J", "[", "]"}]}], ",", "order"}], "]"}]}], ";", 
        "\[IndentingNewLine]", 
        RowBox[{"OmniSubs", "=", 
         RowBox[{"Join", "[", 
@@ -19111,6 +20409,25 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
                RowBox[{"ToExpression", "[", 
                 RowBox[{"StringReplace", "[", 
                  RowBox[{
+                 "\"\<JDS3[-x1,-y1,-z1,v,z]S1[x1]S2[y1]S3[z1]\>\"", ",", 
+                  "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"Temp", "[", 
+                RowBox[{"[", "4", "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
                  "\"\<CD[-u][JDS1[-x1,-y1,-z1,z]]S1[x1]S2[y1]S3[z1]\>\"", ",",
                    "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
               RowBox[{
@@ -19141,6 +20458,180 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
                RowBox[{"Evaluate", "[", 
                 RowBox[{"Temp", "[", 
                  RowBox[{"[", "3", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<CD[-u][JDS3[-x1,-y1,-z1,v,z]]S1[x1]S2[y1]S3[z1]\>\"", 
+                  ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"CD", "[", 
+                RowBox[{"-", "u"}], "]"}], "[", 
+               RowBox[{"Evaluate", "[", 
+                RowBox[{"Temp", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"Style", "[", 
+         RowBox[{
+         "\"\<Lapse bracket...\>\"", ",", "Blue", ",", "20", ",", "Italic"}], 
+         "]"}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Temp", "=", 
+        RowBox[{"ConstraintFieldPoissonBracket", "[", 
+         RowBox[{"fx", ",", 
+          RowBox[{"Lapse", "[", "]"}], ",", "order"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<LapseD[-x1,-y1,-z1]S1[x1]S2[y1]S3[z1]\>\"", ",", 
+                  "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"Temp", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<LapseDS1[-x1,-y1,-z1,z]S1[x1]S2[y1]S3[z1]\>\"", ",", 
+                  "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"Temp", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<LapseDS2[-x1,-y1,-z1,z]S1[x1]S2[y1]S3[z1]\>\"", ",", 
+                  "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"Temp", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<LapseDS3[-x1,-y1,-z1,v,z]S1[x1]S2[y1]S3[z1]\>\"", ",", 
+                  "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"Temp", "[", 
+                RowBox[{"[", "4", "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<CD[-u][LapseDS1[-x1,-y1,-z1,z]]S1[x1]S2[y1]S3[z1]\>\"", 
+                  ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"CD", "[", 
+                RowBox[{"-", "u"}], "]"}], "[", 
+               RowBox[{"Evaluate", "[", 
+                RowBox[{"Temp", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<CD[-u][LapseDS2[-x1,-y1,-z1,z]]S1[x1]S2[y1]S3[z1]\>\"", 
+                  ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"CD", "[", 
+                RowBox[{"-", "u"}], "]"}], "[", 
+               RowBox[{"Evaluate", "[", 
+                RowBox[{"Temp", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+            RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"OmniSubs", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"OmniSubs", ",", 
+          RowBox[{"MakeRule", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Evaluate", "[", 
+               RowBox[{"ToExpression", "[", 
+                RowBox[{"StringReplace", "[", 
+                 RowBox[{
+                 "\"\<CD[-u][LapseDS3[-x1,-y1,-z1,v,z]]S1[x1]S2[y1]S3[z1]\>\"\
+", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"CD", "[", 
+                RowBox[{"-", "u"}], "]"}], "[", 
+               RowBox[{"Evaluate", "[", 
+                RowBox[{"Temp", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
             RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
             RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
@@ -19285,6 +20776,31 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
                     RowBox[{"ToExpression", "[", 
                     RowBox[{"StringReplace", "[", 
                     RowBox[{
+                    RowBox[{"\"\<PhiDS3\>\"", "<>", 
+                    RowBox[{"ToString", "[", 
+                    RowBox[{"SectorNames", "[", 
+                    RowBox[{"[", "ii", "]"}], "]"}], "]"}], "<>", "\"\<[\>\"",
+                     "<>", 
+                    RowBox[{"ToString", "[", "CFrees", "]"}], "<>", 
+                    "\"\<-x1,-y1,-z1,v,z]S1[x1]S2[y1]S3[z1]\>\""}], ",", 
+                    "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+                    RowBox[{"Evaluate", "[", 
+                    RowBox[{"Temp", "[", 
+                    RowBox[{"[", "4", "]"}], "]"}], "]"}]}], "}"}], ",", 
+                  RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+                  RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"OmniSubs", "=", 
+              RowBox[{"Join", "[", 
+               RowBox[{"OmniSubs", ",", 
+                RowBox[{"MakeRule", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"Evaluate", "[", 
+                    RowBox[{"ToExpression", "[", 
+                    RowBox[{"StringReplace", "[", 
+                    RowBox[{
                     RowBox[{"\"\<CD[-u][PhiDS1\>\"", "<>", 
                     RowBox[{"ToString", "[", 
                     RowBox[{"SectorNames", "[", 
@@ -19328,6 +20844,35 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
                     RowBox[{"Evaluate", "[", 
                     RowBox[{"Temp", "[", 
                     RowBox[{"[", "3", "]"}], "]"}], "]"}], "]"}]}], "}"}], 
+                  ",", 
+                  RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
+                  RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"OmniSubs", "=", 
+              RowBox[{"Join", "[", 
+               RowBox[{"OmniSubs", ",", 
+                RowBox[{"MakeRule", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"Evaluate", "[", 
+                    RowBox[{"ToExpression", "[", 
+                    RowBox[{"StringReplace", "[", 
+                    RowBox[{
+                    RowBox[{"\"\<CD[-u][PhiDS3\>\"", "<>", 
+                    RowBox[{"ToString", "[", 
+                    RowBox[{"SectorNames", "[", 
+                    RowBox[{"[", "ii", "]"}], "]"}], "]"}], "<>", "\"\<[\>\"",
+                     "<>", 
+                    RowBox[{"ToString", "[", "CFrees", "]"}], "<>", 
+                    "\"\<-x1,-y1,-z1,v,z]]S1[x1]S2[y1]S3[z1]\>\""}], ",", 
+                    "SuperSubs"}], "]"}], "]"}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"CD", "[", 
+                    RowBox[{"-", "u"}], "]"}], "[", 
+                    RowBox[{"Evaluate", "[", 
+                    RowBox[{"Temp", "[", 
+                    RowBox[{"[", "4", "]"}], "]"}], "]"}], "]"}]}], "}"}], 
                   ",", 
                   RowBox[{"MetricOn", "\[Rule]", "All"}], ",", 
                   RowBox[{"ContractMetrics", "\[Rule]", "True"}]}], "]"}]}], 
@@ -23055,33 +24600,38 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
    RowBox[{"ThetaA2mDefinition", "=", "0"}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"ConsiderCalculatedSecondaries", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
   RowBox[{
-   RowBox[{"For", "[", 
-    RowBox[{
-     RowBox[{"ii", "=", "1"}], ",", 
-     RowBox[{"ii", "<", "11"}], ",", 
-     RowBox[{"ii", "++"}], ",", 
-     RowBox[{"If", "[", 
-      RowBox[{
+   RowBox[{"ConsiderCalculatedSecondaries", "=", 
+    RowBox[{"{", "B1p", "}"}]}], ";"}], 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Just", " ", "this", " ", "once"}], "..."}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"ii", "=", "1"}], ",", 
+      RowBox[{"ii", "<", "11"}], ",", 
+      RowBox[{"ii", "++"}], ",", 
+      RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"Evaluate", "[", 
-         RowBox[{
-          RowBox[{"ToExpression", "[", 
-           RowBox[{"\"\<\[Lambda]\>\"", "<>", 
-            RowBox[{"ToString", "[", 
-             RowBox[{"SectorNames", "[", 
-              RowBox[{"[", "ii", "]"}], "]"}], "]"}]}], "]"}], "/.", 
-          "Freedoms"}], "]"}], "\[Equal]", "0"}], ",", 
-       RowBox[{"ConsiderCalculatedSecondaries", "=", 
-        RowBox[{"Append", "[", 
-         RowBox[{"ConsiderCalculatedSecondaries", ",", 
-          RowBox[{"ToExpression", "[", 
-           RowBox[{"SectorNames", "[", 
-            RowBox[{"[", "ii", "]"}], "]"}], "]"}]}], "]"}]}]}], "]"}]}], 
-    "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{"ToExpression", "[", 
+            RowBox[{"\"\<\[Lambda]\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"SectorNames", "[", 
+               RowBox[{"[", "ii", "]"}], "]"}], "]"}]}], "]"}], "/.", 
+           "Freedoms"}], "]"}], "\[Equal]", "0"}], ",", 
+        RowBox[{"ConsiderCalculatedSecondaries", "=", 
+         RowBox[{"Append", "[", 
+          RowBox[{"ConsiderCalculatedSecondaries", ",", 
+           RowBox[{"ToExpression", "[", 
+            RowBox[{"SectorNames", "[", 
+             RowBox[{"[", "ii", "]"}], "]"}], "]"}]}], "]"}]}]}], "]"}]}], 
+     "]"}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
   RowBox[{"(*", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"ConsiderCalculatedSecondaries", "=", 
@@ -27383,7 +28933,7 @@ z1]\>\"", ",", "SuperSubs"}], "]"}], "]"}], "]"}], ",",
    "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"LineariseCalculatedMultipliers", "[", "1", "]"}], ";"}], 
+   RowBox[{"CalculateSecondaries", "[", "1", "]"}], ";"}], 
   "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Check", "[", 
@@ -31948,7 +33498,37 @@ ScreenDollarIndices\>\""}], "]"}], "]"}], "]"}], ";",
    3.810141083104306*^9}, {3.8101411510171013`*^9, 3.810141186922716*^9}, 
    3.810141220035903*^9, {3.810141391533476*^9, 3.810141392315447*^9}, 
    3.810144263367558*^9, {3.810145377850218*^9, 3.810145409829852*^9}, 
-   3.810147996196823*^9},ExpressionUUID->"302d49ba-2028-4b7e-8fc0-\
+   3.810147996196823*^9, {3.8101519299617367`*^9, 3.8101519408160543`*^9}, {
+   3.8102066890213547`*^9, 3.810206771428183*^9}, {3.810209264168379*^9, 
+   3.8102092789805117`*^9}, {3.8102093462539043`*^9, 3.81020953106215*^9}, 
+   3.810209573393111*^9, {3.810210141057661*^9, 3.8102102655195227`*^9}, {
+   3.810210298899062*^9, 3.810210346727291*^9}, {3.810210445888309*^9, 
+   3.8102105431648617`*^9}, {3.810210756442062*^9, 3.810210886104516*^9}, {
+   3.81021092542934*^9, 3.810211027197406*^9}, {3.810211698699354*^9, 
+   3.81021172327774*^9}, {3.810212113558947*^9, 3.810212238562909*^9}, {
+   3.81021227282369*^9, 3.810212289302252*^9}, {3.810212405055525*^9, 
+   3.810212458979052*^9}, 3.81021285365097*^9, 3.8102179114494343`*^9, 
+   3.8102180071496677`*^9, 3.810218186739654*^9, 3.810218555692091*^9, 
+   3.810219997112156*^9, {3.810230785663249*^9, 3.810230840503963*^9}, {
+   3.810230874324767*^9, 3.810230905077608*^9}, {3.810230952416349*^9, 
+   3.8102309872200403`*^9}, {3.810231022138588*^9, 3.81023106155377*^9}, {
+   3.810231135030747*^9, 3.810231193500204*^9}, {3.810231624561819*^9, 
+   3.810231855161071*^9}, {3.810232681359934*^9, 3.81023277731879*^9}, {
+   3.810232887424617*^9, 3.810232893441711*^9}, 3.810233022861079*^9, {
+   3.8102330632929487`*^9, 3.810233123392589*^9}, {3.810234297087685*^9, 
+   3.8102343395758963`*^9}, {3.810234383470413*^9, 3.810234436487824*^9}, {
+   3.810234699193428*^9, 3.810234704338291*^9}, {3.810234736360011*^9, 
+   3.810234936482911*^9}, {3.810234973074767*^9, 3.810235217184753*^9}, {
+   3.8102352543020267`*^9, 3.810235338696464*^9}, {3.810235380276873*^9, 
+   3.810235539561083*^9}, {3.810235584341468*^9, 3.810235775814554*^9}, {
+   3.810235806540475*^9, 3.8102358208787603`*^9}, {3.810235865087194*^9, 
+   3.8102359768257236`*^9}, {3.810236556157278*^9, 3.81023668039729*^9}, {
+   3.810236731348881*^9, 3.810236803826021*^9}, {3.8102368371568623`*^9, 
+   3.8102368841744204`*^9}, {3.810236919477556*^9, 3.8102369886379347`*^9}, {
+   3.810238145299101*^9, 3.81023824066431*^9}, 3.81023877111161*^9, {
+   3.8102398658283663`*^9, 3.810239949435397*^9}, {3.81024095734486*^9, 
+   3.810240994766996*^9}, 3.810241044802863*^9, 3.8102415416315937`*^9, 
+   3.810242261193513*^9},ExpressionUUID->"302d49ba-2028-4b7e-8fc0-\
 e14a5acdfa7a"]
 },
 WindowSize->{1920, 1148},
@@ -31967,7 +33547,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 1260618, 31931, 72893, "Input",ExpressionUUID->"302d49ba-2028-4b7e-8fc0-e14a5acdfa7a"]
+Cell[558, 20, 1326098, 33511, 77378, "Input",ExpressionUUID->"302d49ba-2028-4b7e-8fc0-e14a5acdfa7a"]
 }
 ]
 *)
