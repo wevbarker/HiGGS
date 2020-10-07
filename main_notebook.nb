@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1399252,      34986]
-NotebookOptionsPosition[   1398957,      34973]
-NotebookOutlinePosition[   1399291,      34988]
-CellTagsIndexPosition[   1399248,      34985]
+NotebookDataLength[   1399304,      34987]
+NotebookOptionsPosition[   1399009,      34974]
+NotebookOutlinePosition[   1399343,      34989]
+CellTagsIndexPosition[   1399300,      34986]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -43,10 +43,10 @@ Cell[BoxData[{
   RowBox[{"(*", 
    RowBox[{"General", " ", "switchboard"}], "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"SuperTheory", "=", "TheoryCase25"}], 
+  RowBox[{"SuperTheory", "=", "TheoryCase24"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"CaseName", "=", "Case25"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"CaseName", "=", "Case24"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"DiagnosticMode", "=", "False"}], ";"}], 
@@ -34967,8 +34967,9 @@ ScreenDollarIndices\>\""}], "]"}], "]"}], "]"}], ";",
    3.811004201501626*^9}, {3.8110110043739853`*^9, 3.8110110368885603`*^9}, 
    3.811011100242385*^9, {3.8110111348179827`*^9, 3.81101118492063*^9}, {
    3.81101149026276*^9, 3.81101149881384*^9}, {3.8110144817944727`*^9, 
-   3.811014483655202*^9}, {3.8110192239843187`*^9, 
-   3.811019226701679*^9}},ExpressionUUID->"302d49ba-2028-4b7e-8fc0-\
+   3.811014483655202*^9}, {3.8110192239843187`*^9, 3.811019226701679*^9}, {
+   3.811021109719293*^9, 
+   3.8110211113299522`*^9}},ExpressionUUID->"302d49ba-2028-4b7e-8fc0-\
 e14a5acdfa7a"]
 },
 WindowSize->{1920, 1148},
@@ -34987,7 +34988,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 1398395, 34951, 82346, "Input",ExpressionUUID->"302d49ba-2028-4b7e-8fc0-e14a5acdfa7a"]
+Cell[558, 20, 1398447, 34952, 82346, "Input",ExpressionUUID->"302d49ba-2028-4b7e-8fc0-e14a5acdfa7a"]
 }
 ]
 *)
