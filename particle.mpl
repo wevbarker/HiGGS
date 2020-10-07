@@ -255,18 +255,18 @@ for ii in selection do
   printf(cat("\\criticalcase{",convert(ii,string),"}"));
   printf(cat("&",constraint_||ii));
   printf(cat("&",unitarity_constraint_||ii));
-  printf(cat("& \\includegraphics[width=0.4cm]{particle_content_icons/critical_case_",convert(ii,string),"_J0Pm.pdf}"));
-  printf(cat("& \\includegraphics[width=0.4cm]{particle_content_icons/critical_case_",convert(ii,string),"_J0Pp.pdf}"));
-  printf(cat("& \\includegraphics[width=0.4cm]{particle_content_icons/critical_case_",convert(ii,string),"_J1Pm.pdf}"));
-  printf(cat("& \\includegraphics[width=0.4cm]{particle_content_icons/critical_case_",convert(ii,string),"_J1Pp.pdf}"));
-  printf(cat("& \\includegraphics[width=0.4cm]{particle_content_icons/critical_case_",convert(ii,string),"_J2Pm.pdf}"));
-  printf(cat("& \\includegraphics[width=0.4cm]{particle_content_icons/critical_case_",convert(ii,string),"_J2Pp.pdf}"));
+  printf(cat("& \\includegraphics[width=0.5cm]{particle_content_icons/critical_case_",convert(ii,string),"_J0Pm.pdf}"));
+  printf(cat("& \\includegraphics[width=0.5cm]{particle_content_icons/critical_case_",convert(ii,string),"_J0Pp.pdf}"));
+  printf(cat("& \\includegraphics[width=0.5cm]{particle_content_icons/critical_case_",convert(ii,string),"_J1Pm.pdf}"));
+  printf(cat("& \\includegraphics[width=0.5cm]{particle_content_icons/critical_case_",convert(ii,string),"_J1Pp.pdf}"));
+  printf(cat("& \\includegraphics[width=0.5cm]{particle_content_icons/critical_case_",convert(ii,string),"_J2Pm.pdf}"));
+  printf(cat("& \\includegraphics[width=0.5cm]{particle_content_icons/critical_case_",convert(ii,string),"_J2Pp.pdf}"));
   if ii=3 then
-     printf(cat("& \\includegraphics[width=0.4cm]{massive.pdf}\\includegraphics[width=0.4cm]{massless.pdf}\\includegraphics[width=0.4cm]{massless.pdf}"));
+     printf(cat("& \\includegraphics[width=0.5cm]{massive.pdf}\\includegraphics[width=0.5cm]{massless.pdf}\\includegraphics[width=0.5cm]{massless.pdf}"));
   elif ii=17 then
-     printf(cat("& \\includegraphics[width=0.4cm]{massless.pdf}\\includegraphics[width=0.4cm]{massless.pdf}"));
+     printf(cat("& \\includegraphics[width=0.5cm]{massless.pdf}\\includegraphics[width=0.5cm]{massless.pdf}"));
   elif ii=20 then
-     printf(cat("& \\multirow{6}{*}{\\includegraphics[width=0.4cm]{massive.pdf}}"));
+     printf(cat("& \\multirow{6}{*}{\\includegraphics[width=0.5cm]{massive.pdf}}"));
   else
     printf("&");
   end if;
