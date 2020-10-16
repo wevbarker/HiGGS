@@ -9,7 +9,10 @@ convert_parameters_print_equations(N,M);
 convert_parameters_print_equations(N,Y);
 convert_parameters_print_equations(Y,N);
 convert_parameters_print_equations(N,W);
+convert_parameters_print_equations(cW1,M);
+convert_parameters_print_equations(cW1,N);
 dit({},"now looking at function");
+
 
 dit({},"simplify..");
 
@@ -19,6 +22,11 @@ sectors:=indices(Hamiltonian_partitions,`nolist`):
 cases:=[indices(theories,`nolist`)]:
 minimal_theories:=table([]):
 eqs:=convert_parameters_return_equations(Y,N);
+eqs2:=convert_parameters_return_equations(cW1,N);
+eqs3:=convert_parameters_return_equations(Y,M);
+
+print(eqs);
+print(eqs2);
 
 #eqs:=convert_parameters_return_equations(N,M);
 #eqs:=convert_parameters_return_equations(M,N);
@@ -32,6 +40,18 @@ converted_theories:=table([]):
 
 for ii in cases do
   converted_theories[ii]:=[simplify(theories[ii][1],eqs),theories[ii][2]]:
+end do:
+
+converted_theories2:=table([]):
+
+for ii in cases do
+  converted_theories2[ii]:=[simplify(eqs2,converted_theories[ii][1])]:
+end do:
+
+converted_theories3:=table([]):
+
+for ii in cases do
+  converted_theories3[ii]:=[simplify(theories[ii][1],eqs3),theories[ii][2]]:
 end do:
 
 converted_theories_unitarity:=table([]):
@@ -136,6 +156,8 @@ for ii in simple_cases do
   dit({fred,underline},"--------------------------------------------------------------------------------------------");
   dit({},"case %d",ii):
   conditions:=converted_theories[ii][1]:
+  conditions2:=converted_theories2[ii]:
+  conditions3:=converted_theories3[ii][1]:
   conditions_unitarity:=converted_theories_unitarity[ii][1]:
   primaries:=find_primaries(conditions):
   simple_primaries:=find_simple_primaries(conditions,primaries):
@@ -143,11 +165,18 @@ for ii in simple_cases do
   frees:=find_frees(primaries):
   simple_frees:=find_simple_primaries(conditions,frees):
   massless_frees:=find_massless_frees(conditions,frees):
+  dit({},"MA:"):
+  print(op(conditions2)):
+  dit({},"Mike:"):
+  print(op(conditions3)):
   dit({},"conditions:"):
   print(op(conditions)):
   dit({},"better conditions:"):
   better_condiions:=solve(conditions):
   print(better_condiions):
+  dit({},"better Mike conditions:"):
+  better_condiions3:=solve(conditions3):
+  print(better_condiions3):
   dit({},"unitarity conditions:"):
   print(op(map(simplify,conditions_unitarity,better_condiions))):
   dit({},"primaries:"):
