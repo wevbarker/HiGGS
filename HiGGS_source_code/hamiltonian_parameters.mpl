@@ -151,6 +151,11 @@ simple_cases:={20,24,25,26,28,32,3,17}:
 
 YN_higher_spin:={YN1p,YN1m,YN2p,YN2m,YN0m2m1,YN0m2m2,KN}:
 
+
+#mock version of kinetic part of Hamiltonian
+
+
+
 for ii in simple_cases do 
 #for ii in viable_cases do
   dit({fred,underline},"--------------------------------------------------------------------------------------------");
