@@ -8,7 +8,7 @@
 
 ## What is `HiGGS`?
 
-`HiGGS` is a Mathematica package for the xAct tensor algebra suite, which implements the Dirac-Bergmann algorithm across the space of possible gauge gravity theories. Currently `HiGGS` can make strong claims about the particle content and health of Poincaré gauge theories (PGT) of gravity, i.e. theories containing up to quadratic invariants in the Riemann and torsion tensors, with a 10-parameter Lagrangian:
+`HiGGS` is an Mathematica package for the xAct tensor algebra suite, which implements the Dirac-Bergmann algorithm across the space of possible gauge gravity theories. Currently `HiGGS` can make strong claims about the particle content and health of Poincaré gauge theories (PGT) of gravity, i.e. theories containing up to quadratic invariants in the Riemann and torsion tensors, with a 10-parameter Lagrangian:
 
 <img src="HiGGS_source_code/lagrangian-1.png" width="500">
 
