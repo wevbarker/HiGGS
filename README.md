@@ -1,5 +1,5 @@
 #  :warning: PREPRINT draft_paper.pdf NOW FINISHED :warning:
-##  :warning: new website [wevbarker.com](https://www.wevbarker.com) (temporary notification on all my public repos) :warning:
+##  :warning: new website [wevbarker.com](http://www.wevbarker.com) (temporary notification on all my public repos) :warning:
 #  :ghost: Hamiltonian Gauge Gravity Surveyor :ghost:
  - `HiGGS` is scheduled for public release in winter 2020 :snowflake:
  - **To see what it can already do, take a look at the first preprint `draft_paper.pdf`**
