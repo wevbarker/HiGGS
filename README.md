@@ -16,5 +16,6 @@
 
 Throughout 2021 I aim to extend the code to Weyl and metric-affine gauge theories (WGT/eWGT/MAGT).
 
-<img src="HiGGS_source_code/first.gif" width="500">
+<img src="HiGGS_source_code/first.gif" width="1000">
+<img src="HiGGS_source_code/second.gif" width="1000">
 
