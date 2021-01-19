@@ -1,4 +1,4 @@
-#  :warning: PREPRINT arXiv_2101.02645.pdf NOW FINISHED :warning:
+#  :warning: PREPRINT [arXiv_2101.02645.pdf](https://arxiv.org/abs/2101.02645) NOW FINISHED :warning:
 ##  :warning: new website [wevbarker.com](http://www.wevbarker.com) (temporary notification on all my public repos) :warning:
 #  :ghost: Hamiltonian Gauge Gravity Surveyor :ghost:
  - `HiGGS` is scheduled for public release in winter 2020 :snowflake:
@@ -16,6 +16,9 @@
 
 Throughout 2021 I aim to extend the code to Weyl and metric-affine gauge theories (WGT/eWGT/MAGT).
 
+## Some slides from a recent talk for LMU Munich
+
 <img src="HiGGS_source_code/first.gif" width="1000">
 <img src="HiGGS_source_code/second.gif" width="1000">
+<img src="HiGGS_source_code/third.pdf" width="1000">
 
