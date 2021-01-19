@@ -18,7 +18,6 @@ Throughout 2021 I aim to extend the code to Weyl and metric-affine gauge theorie
 
 ## Some slides from a recent talk for LMU Munich
 
-<img src="HiGGS_source_code/third.pdf" width="1000">
 <img src="HiGGS_source_code/first.gif" width="1000">
 <img src="HiGGS_source_code/second.gif" width="1000">
 
