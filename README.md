@@ -6,9 +6,13 @@
 <img src="xAct/HiGGS/Documentation/Examples/peta4.rdm.png" width="1000">
 
 # Hamiltonian Gauge Gravity Surveyor (HiGGS)
-## Version 1.0.0
+## Version 1.2.3
 
-- Initial release
+- **Feature:** abstract indices representing gauge-fixed theory given cleaner formatting with Gothic script, extended indices `a1`, `b1`, `c1` etc. denoted by primes.
+- **Feature:** provide more intuitive formatting of Poisson brackets in terms of smearing functions, as seen in output of `PoissonBracket` and `ViewTheory`.
+- **Patch:** fix shadowing error messages during the `Needs` or `Get` package call preamble.
+- **Patch:** fix [Issue #1](https://github.com/wevbarker/HiGGS/issues/1), loading of binaries on Windows.
+- **Patch:** fix errors produced by `PoissonBracket` with the option `"Surficial"->True`. This error follows from sign errors in line two of Equation (E3) in [2205.13534](https://arxiv.org/abs/2205.13534), and generates nonphysical surface terms. My particular thanks to [Manuel Hohmann](https://github.com/xenos1984) for identifying this.
 
 ## License
 
@@ -31,6 +35,7 @@ HiGGS is an (unofficial) part of the [xAct bundle](http://www.xact.es/). It prov
 #### Requirements 
 HiGGS has been tested in the following environment(s):
 - Linux x86 (64-bit), specifically Manjaro, Arch, CentOS, Scientific Linux and Ubuntu
+- Windows 10, as of HiGGS v 1.2.3
 - Mathematica v 11.3.0.0
 - xAct v 1.2.0
 #### Install 
@@ -108,7 +113,6 @@ xAct
     │   │   ├── appcg.job.sh
     │   │   ├── appcg.plt.py
     │   │   ├── appcg.plt.sh
-    │   │   ├── appcg.scp.sh
     │   │   ├── peta4.job.m
     │   │   ├── peta4.job.nb
     │   │   ├── peta4.job.sh
@@ -116,7 +120,6 @@ xAct
     │   │   ├── peta4.plt.py
     │   │   ├── peta4.plt.sh
     │   │   ├── peta4.rdm.png
-    │   │   ├── peta4.scp.sh
     │   │   ├── peta4.svy.m
     │   │   ├── peta4.svy.nb
     │   │   ├── svy
@@ -130,6 +133,10 @@ xAct
     │   └── HiGGS_sources.pdf
     ├── HiGGS.m
     ├── HiGGS.nb
+    ├── HiGGS_smearing_functions_global.m
+    ├── HiGGS_smearing_functions.m
+    ├── HiGGS_SO3.m
+    ├── HiGGS_SO3.nb
     ├── HiGGS_sources.m
     ├── HiGGS_sources.nb
     ├── HiGGS_variations.m
@@ -150,6 +157,8 @@ The sub-package `HiGGS_variations.m` incorporates elements of [Cyril Pitrou's](h
 The files `HiGGS.pdf` and `HiGGS_sources.pdf` are carbon copies of the source notebooks.
 
 The notebook `tutor.nb` contains some more basic examples, and it relies on the `*.thr.mx` files in the `svy` directory.
+
+The Wolfram Language files which refer to smearing functions are patches in version 1.2.2.
 
 #### What are peta4 and appcg? 
 

@@ -19,8 +19,11 @@
 
 
 
-(* ::Input::Initialization:: *)
-xAct`HiGGS`$Version={"1.0.0-beta",{2022,2,1}};
+(* ::Code::Initialization:: *)
+(**)xAct`HiGGS`$Version={"1.2.3",{2022,9,4}};(**)
+(*
+xAct`HiGGS`$Version={"1.2.3-developer",DateList@FileDate@$InputFileName~Drop~(-3)};
+*)
 
 
 (* ::Input::Initialization:: *)
@@ -45,7 +48,7 @@ You should have received a copy of the GNU General Public License
 *)
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (* :Title: HiGGS *)
 
 (* :Author: Will E. V. Barker *)
@@ -74,35 +77,48 @@ You should have received a copy of the GNU General Public License
 	- many *)
 
 
-(* ::Input::Initialization:: *)
+xAct`HiGGS`$Timing;
+Off[Global`$Timing::shdw];
+xAct`HiGGS`$Node;
+Off[Global`$Node::shdw];
+
+
+(* ::Code::Initialization:: *)
+If[Unevaluated[xAct`xCore`Private`$LastPackage]===xAct`xCore`Private`$LastPackage,xAct`xCore`Private`$LastPackage="xAct`HiGGS`"];
+
+
+(* ::Code::Initialization:: *)
 BeginPackage["xAct`HiGGS`",{"xAct`xTensor`","xAct`xPerm`","xAct`xCore`","xAct`xTras`"}];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 ParallelNeeds["xAct`HiGGS`"];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 SetOptions[$FrontEndSession,EvaluationCompletionAction->"ScrollToOutput"];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
+Print[xAct`xCore`Private`bars];
 Print["Package xAct`HiGGS`  version ",$Version[[1]],", ",$Version[[2]]];
-Print["CopyRight (C) 2022, Will E. V. Barker, under the General Public License."];
+Print["CopyRight \[Copyright] 2022, Will E. V. Barker, under the General Public License."];
 Print[xAct`xCore`Private`bars];
-Print["This free version of HiGGS is an open source dependent of the xAct bundle, but NOT an official part thereof."];
-Print["This free version of HiGGS incorporates Cyril Pitrou's code from the public repository at https://github.com/xAct-contrib/examples."];
-Print[xAct`xCore`Private`bars];
+Print["HiGGS is an open source dependent of the xAct bundle."];
+Print["HiGGS incorporates Cyril Pitrou's code from the public repository at https://github.com/xAct-contrib/examples."];
+(*Print[xAct`xCore`Private`bars];*)
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*
 If[!ValueQ@Global`$Timing,
 Global`$Timing=False;
 Global`$Node="";
 ];
 *)
+(*
 Print["Some hard-to-suppress error messages may appear below..."];
+*)
 Quiet[
 DistributeDefinitions@$Timing;
 DistributeDefinitions@Global`$Timing;
@@ -113,23 +129,25 @@ DistributeDefinitions@$Node;
 DistributeDefinitions@Global`$Node;
 ];
 ];
+(*
 Print["...and that should be it: no further errors should appear below here."];
 Print[xAct`xCore`Private`bars];
+*)
 (*,Print["issues"],{$Node::shdw,Global`$Node::shdw,$Timing::shdw,Global`$Timing::shdw}*)
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*Because the developer version of HiGGS is not installed, and sits locally, we need this*)
 (*was Needs called on the HiGGS package from a notebook?*)
 If[NotebookDirectory[]==$Failed,$WorkingDirectory=Directory[];,$WorkingDirectory=NotebookDirectory[];,$WorkingDirectory=NotebookDirectory[];];
-Print["The working directory is "<>$WorkingDirectory];
+(*Print["The working directory is "<>$WorkingDirectory];*)
 $Path~AppendTo~$WorkingDirectory;
 $HiGGSInstallDirectory=Select[FileNameJoin[{#,"xAct/HiGGS"}]&/@$Path,DirectoryQ][[1]];
-Print["At least one HiGGS installation directory was found at "<>$HiGGSInstallDirectory<>"."];
-Print[xAct`xCore`Private`bars];
+(*Print["At least one HiGGS installation directory was found at "<>$HiGGSInstallDirectory<>"."];
+Print[xAct`xCore`Private`bars];*)
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 ActiveCellTags={"build"};
 UnitTests={"CheckOrthogonalityToggle","ShowIrrepsToggle","ProjectionNormalisationsCheckToggle","ShowIrrepsToggle","documentation"};
 PrematureCellTags={"TransferCouplingsPerpPerpToggle","TransferCouplingsPerpParaToggle"};
@@ -138,7 +156,7 @@ BuiltBinaries=BinaryNames~Select~(FileExistsQ@FileNameJoin@{$HiGGSInstallDirecto
 ActiveCellTags=ActiveCellTags~Join~(BinaryNames~Complement~BuiltBinaries);
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*time when the package is called*)
 $HiGGSBuildTime=AbsoluteTime[];
 (*set up a file to record the start time of a job*)
@@ -152,14 +170,14 @@ ToExpression@("<<"<>$BuildTimeFilename<>";");
 HiGGSAbsoluteTime[]:=Module[{},AbsoluteTime[]-$HiGGSBuildTime];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*remember to modify this if you want to time another function in HiGGS_sources.nb *)
 $TimedFunctionList={"BuildHiGGS","DefTheory","Velocity","PoissonBracket","DeclareOrder","ToOrderCanonical","VarAction","ToNewCanonical"};
 (*initial zeroes, i.e. the default line*)
 $HiGGSTimingLine=0.~ConstantArray~(20*2Length@$TimedFunctionList);
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*which kernel are we in? This sets the file in which we record stats*)
 $HiGGSTimingFile=Quiet@FileNameJoin@{$WorkingDirectory,"svy","node-"<>$Node,"chr","kernel-"<>ToString@$KernelID<>".chr.csv"};
 (*a function which writes all current data to the kernel file*)
@@ -173,7 +191,7 @@ $HiGGSTimingData={};
 ];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*headers for the timing file*)
 $HiGGSTimingData={};
 (*$HiGGSTimingData~AppendTo~Flatten@(Flatten@(({#,#})&/@$TimedFunctionList)~ConstantArray~10)*)
@@ -182,7 +200,7 @@ $HiGGSTimingData~AppendTo~$HiGGSTimingLine;
 Quiet[WriteHiGGSTimingData[]];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*Try timing, i.e. this only works to print to file once every $PauseSeconds*)
 $PauseSeconds=6;
 $LastMultiple=0;
@@ -202,12 +220,12 @@ NotebookDelete[printer];
 ];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*This is redefined only when the theory batch is introduced, but only needed beyond that point anyway*)
 Quiet@ToExpression["<<"<>FileNameJoin@{$WorkingDirectory,"svy","node-"<>$Node,"peta4.nom.mx"}<>";"];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*don't try timing until we call the function in expr*)
 TimeWrapper~SetAttributes~HoldAll;
 (*the actual timing function*)
@@ -232,11 +250,19 @@ temp=Evaluate@expr];
 temp];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 ForceTiming[]:=WriteHiGGSTimingData[];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
+If[xAct`xCore`Private`$LastPackage==="xAct`HiGGS`",
+Unset[xAct`xCore`Private`$LastPackage];
+Print[xAct`xCore`Private`bars];
+Print["These packages come with ABSOLUTELY NO WARRANTY; for details type Disclaimer[]. This is free software, and you are welcome to redistribute it under certain conditions. See the General Public License for details."];
+Print[xAct`xCore`Private`bars]];
+
+
+(* ::Code::Initialization:: *)
 BuildHiGGS::usage="Rebuild the HiGGS session";
 ToNesterForm::usage="Express quantity in terms of human-readable irreps";
 ToBasicForm::usage="Express quantity in terms of basic gauge fields";
@@ -247,19 +273,30 @@ StudyTheory::usage="Calculate the links in the constraint chain down do a certai
 Velocity::usage="Calculate the velocity of a quantity with respect to the Hamiltonian indicated by DefTheory";
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
+MakeQuotientRule::usage="MakeQuotientRule[{xTensor,Expr}] makes a rule which takes an expression Expr containing single instance of an xTensor, with a specified valence and some constant or scalar coefficient, assumes that same expression to be zero, and replaces future instances of that xTensor accordingly. The options include the same options as for MakeRule.";
+ToNewCanonical::usage="ToNewCanonical[Expr] is a convenience wrapper for ScreenDollarIndices@ContractMetric@ToCanonical@Expr.";
+
+
+BuildSO3::usage="BuildSO3 is a boolean option for BuildHiGGS, which determines whether objects referring to the special orthogonal group in three dimensions, SO(3), are also to be built. Default is True.";
+Canonicalise::usage="Canonicalise is an option for MakeQuotientRule, which determines whether ToCanonical is run on the solved expression.";
+Verify::usage="Verify is an option for MakeQuotientRule, which determines whether the action of the rule is verified.";
+
+
+(* ::Code::Initialization:: *)
 $Theory::usage="The gauge theory as defined by a system of equations which constrains the coupling coefficients";
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 Begin["xAct`HiGGS`Private`"];
 
 
-(* ::Input::Initialization:: *)
+(* ::Code::Initialization:: *)
 (*HiGGS cannot build itself more than once, since xAct does not forgive mutability...!*)
 $HiGGSBuilt=False;
 BuildHiGGS::built="The HiGGS environment has already been built.";
-BuildHiGGS[]:="BuildHiGGS"~TimeWrapper~Catch@Module[{PriorMemory,UsedMemory},
+Options@BuildHiGGS={BuildSO3->True};
+BuildHiGGS[OptionsPattern[]]:="BuildHiGGS"~TimeWrapper~Catch@Module[{PriorMemory,UsedMemory},
 (*A message*)
 xAct`xTensor`Private`MakeDefInfo[BuildHiGGS,$KernelID,{"HiGGS environment for kernel",""}];
 (*Check for pre-existing build*)
@@ -269,10 +306,10 @@ $PrintCellsBeforeStartBuildHiGGS=Flatten@Cells[SelectedNotebook[],CellStyle->{"P
 PriorMemory=MemoryInUse[];
 Print[" ** BuildHiGGS: RAM used by kernel ",$KernelID," is ",Dynamic[Refresh[MemoryInUse[],UpdateInterval->1]]," bytes."];
 Print[" ** BuildHiGGS: Building session from ",FileNameJoin@{$HiGGSInstallDirectory,"HiGGS_sources.nb"}," with active CellTags ",ActiveCellTags,"."];
-(*NotebookEvaluate[FileNameJoin@{$HiGGSInstallDirectory,"HiGGS_sources.nb"},InsertResults\[Rule]False];*)
-(*NotebookEvaluate[FileNameJoin@{$HiGGSInstallDirectory,"HiGGS_sources.nb"},EvaluationElements\[Rule]"Tags"->ActiveCellTags,InsertResults\[Rule]False];*)
 Get[FileNameJoin@{$HiGGSInstallDirectory,"HiGGS_sources.m"}];
-Print[" ** BuildHiGGS: The context on quitting HiGGS.m is ",$Context,"."];
+If[OptionValue@BuildSO3,
+Get[FileNameJoin@{$HiGGSInstallDirectory,"HiGGS_SO3.m"}];
+];
 (*Purge all cells created during build process*)
 Pause[2];
 UsedMemory=MemoryInUse[]-PriorMemory;
@@ -282,6 +319,34 @@ $HiGGSBuilt=True;
 ];
 
 
+ToNewCanonical[Expr_]:="ToNewCanonical"~TimeWrapper~Module[{temp,printer},
+printer=PrintTemporary[" ** ToNewCanonical..."];
+(*Beep[];*)
+temp=Expr//ToCanonical;
+temp=temp//ContractMetric;
+temp=temp//ScreenDollarIndices;
+NotebookDelete@printer;
+temp];
+
+
+Options[MakeQuotientRule]={MetricOn->All,ContractMetrics->True,Canonicalise->True,Verify->True,Method->"SolveTensors"};
+MakeQuotientRule::method="Option Method should be strings \"SolveTensors\" or \"Coefficient\".";
+MakeQuotientRule[{xTensor_[Indices___],Expr_},OptionsPattern[]]:=Catch@Module[{QuotientRule,ScalarCoefficient,ReplacementValue,SelfApplied,printer},
+printer={};
+printer=printer~Append~PrintTemporary@" ** MakeQuotientRule...";
+Switch[OptionValue@Method,"SolveTensors",
+QuotientRule=First@SolveTensors[Expr==0,xTensor[Indices]];,
+"Coefficient",
+ScalarCoefficient=Expr~Coefficient~xTensor[Indices];
+ReplacementValue=Evaluate@(-(Expr-xTensor[Indices] ScalarCoefficient)/ScalarCoefficient);
+QuotientRule=MakeRule[{xTensor[Indices],Evaluate@ReplacementValue},MetricOn->OptionValue@MetricOn,ContractMetrics->OptionValue@ContractMetrics];,
+_,Throw@Message@(MakeQuotientRule::method)];
+If[OptionValue@Canonicalise,Print@" ** MakeQuotientRule: canonicalised expression with tensor substituted by rule:";ReplacementValue=ToCanonical@ReplacementValue;];
+If[OptionValue@Verify,printer=printer~Append~PrintTemporary@" ** ToCanonical...";SelfApplied=Expr/.QuotientRule;SelfApplied=SelfApplied//NoScalar;SelfApplied=SelfApplied//ToCanonical;Print@SelfApplied;];
+NotebookDelete@printer;
+QuotientRule];
+
+
 (* ::Input::Initialization:: *)
 (*
 FrontEndExecute@{FrontEndToken[InputNotebook[],"SelectAll"],FrontEndToken[InputNotebook[],"SelectionOpenAllGroups"]};
@@ -289,6 +354,9 @@ Export[NotebookDirectory[]<>"Documentation/HiGGS.pdf",EvaluationNotebook[]];
 *)
 
 
-(* ::Input::Initialization:: *)
+Get[FileNameJoin@{$HiGGSInstallDirectory,"HiGGS_smearing_functions.m"}];
+
+
+(* ::Code::Initialization:: *)
 End[];
 EndPackage[];
