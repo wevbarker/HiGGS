@@ -1,3 +1,5 @@
+:warning: As of January 2026, HiGGS has been deprecated by [Hamilcar](https://github.com/wevbarker/Hamilcar) and is no longer actively maintained.
+
 ![license](https://img.shields.io/github/license/wevbarker/HiGGS)
 [![arXiv](https://img.shields.io/badge/arXiv-2206.00658-b31b1b.svg)](https://arxiv.org/abs/2206.00658)
 [![arXiv](https://img.shields.io/badge/arXiv-2205.13534-b31b1b.svg)](https://arxiv.org/abs/2205.13534)
